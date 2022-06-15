@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -58,11 +59,23 @@ namespace Wox.Helper
         [DllImport("user32.DLL")]
         public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
 
+        [DllImport("user32.dll", SetLastError=true)]
+        static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
         const string WINDOW_CLASS_CONSOLE = "ConsoleWindowClass";
         const string WINDOW_CLASS_WINTAB = "Flip3D";
         const string WINDOW_CLASS_PROGMAN = "Progman";
         const string WINDOW_CLASS_WORKERW = "WorkerW";
+
+        public static Process GetActiveProcess()
+        {
+            IntPtr handle = GetForegroundWindow();
+            uint pID;
+           
+            GetWindowThreadProcessId(handle, out pID);
+
+            return Process.GetProcessById((Int32)pID);
+        }
 
         public static bool IsWindowFullscreen()
         {

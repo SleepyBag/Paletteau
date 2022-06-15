@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,6 +33,11 @@ namespace Wox.Plugin
         /// so this property will always give you the "real" query part of the query
         /// </summary>
         public string Search { get; internal set; }
+
+        /// <summary>
+        /// The background process which is active before wox takes focus.
+        /// </summary>
+        public Process BackgroundProcess { get; internal set; }
 
         /// <summary>
         /// The raw query splited into a string array.

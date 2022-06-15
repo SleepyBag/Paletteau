@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using Wox.Plugin;
@@ -7,7 +8,7 @@ namespace Wox.Core.Plugin
 {
     public static class QueryBuilder
     {
-        public static Query Build(string text, Dictionary<string, PluginPair> nonGlobalPlugins)
+        public static Query Build(string text, Process backgroundProcess, Dictionary<string, PluginPair> nonGlobalPlugins)
         {
             // replace multiple white spaces with one white space
             var terms = text.Split(new[] { Query.TermSeperater }, StringSplitOptions.RemoveEmptyEntries);
@@ -40,6 +41,7 @@ namespace Wox.Core.Plugin
                 RawQuery = rawQuery,
                 ActionKeyword = actionKeyword,
                 Search = search,
+                BackgroundProcess = backgroundProcess,
                 // Obsolete value initialisation
                 ActionName = actionKeyword,
                 ActionParameters = actionParameters

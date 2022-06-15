@@ -23,6 +23,11 @@ using Wox.Infrastructure.Storage;
 using Wox.Infrastructure.UserSettings;
 using Wox.Plugin;
 using Wox.Storage;
+using System.Drawing;
+using System.Windows.Media;
+using System.IO;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
 
 namespace Wox.ViewModel
 {
@@ -43,6 +48,7 @@ namespace Wox.ViewModel
         private BlockingCollection<ResultsForUpdate> _resultsQueue;
 
         private CancellationTokenSource _updateSource;
+        private Process _backgroundProcess;
         private bool _saved;
 
         private readonly Internationalization _translator;
@@ -275,6 +281,35 @@ namespace Wox.ViewModel
             }
         }
 
+        public string ProcessName
+        {
+            get {
+                if (_backgroundProcess == null)
+                    return "No Background Process";
+                else
+                    return _backgroundProcess.ProcessName;
+            }
+        }
+
+        public ImageSource ProcessIcon
+        {
+            get
+            {
+                if (_backgroundProcess == null)
+                    return null;
+                else
+                {
+                    var icon = Icon.ExtractAssociatedIcon(_backgroundProcess.MainModule.FileName);
+                    ImageSource imageSource = Imaging.CreateBitmapSourceFromHIcon(
+                        icon.Handle,
+                        Int32Rect.Empty,
+                        BitmapSizeOptions.FromEmptyOptions());
+
+                    return imageSource;
+                }
+            }
+        }
+
         /// <summary>
         /// we need move cursor to end when we manually changed query
         /// but we don't want to move cursor to end when query is updated from TextBox
@@ -452,7 +487,7 @@ namespace Wox.ViewModel
                 if (!string.IsNullOrEmpty(queryText))
                 {
                     if (token.IsCancellationRequested) { return; }
-                    var query = QueryBuilder.Build(queryText, PluginManager.NonGlobalPlugins);
+                    var query = QueryBuilder.Build(queryText, _backgroundProcess, PluginManager.NonGlobalPlugins);
                     _lastQuery = query;
                     if (query != null)
                     {
@@ -681,6 +716,10 @@ namespace Wox.ViewModel
 
         private void OnHotkey(object sender, HotkeyEventArgs e)
         {
+            _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
+            OnPropertyChanged(nameof(ProcessName));
+            OnPropertyChanged(nameof(ProcessIcon));
+
             if (!ShouldIgnoreHotkeys())
             {
 
