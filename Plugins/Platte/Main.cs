@@ -84,7 +84,9 @@ namespace Platte
 
         public void Init(PluginInitContext context)
         {
-            setting = Setting.ReadSetting("C:\\Users\\qianmingxue\\Wox\\Plugins\\Platte\\settings.json");
+            setting = Setting.ReadSetting(
+                Path.Combine(context.CurrentPluginMetadata.PluginDirectory, "settings.json")
+            );
         }
     }
 }
