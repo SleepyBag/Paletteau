@@ -12,18 +12,13 @@ namespace Wox.Core.Plugin
         {
             // replace multiple white spaces with one white space
             var terms = text.Split(new[] { Query.TermSeperater }, StringSplitOptions.RemoveEmptyEntries);
-            if (terms.Length == 0)
-            { // nothing was typed
-                return null;
-            }
 
             var rawQuery = string.Join(Query.TermSeperater, terms);
             string actionKeyword, search;
-            string possibleActionKeyword = terms[0];
             List<string> actionParameters;
-            if (nonGlobalPlugins.TryGetValue(possibleActionKeyword, out var pluginPair) && !pluginPair.Metadata.Disabled)
+            if (terms.Length > 0 && nonGlobalPlugins.TryGetValue(terms[0], out var pluginPair) && !pluginPair.Metadata.Disabled)
             { // use non global plugin for query
-                actionKeyword = possibleActionKeyword;
+                actionKeyword = terms[0];
                 actionParameters = terms.Skip(1).ToList();
                 search = actionParameters.Count > 0 ? rawQuery.Substring(actionKeyword.Length + 1) : string.Empty;
             }

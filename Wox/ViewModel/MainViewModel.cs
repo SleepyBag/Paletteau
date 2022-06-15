@@ -484,89 +484,81 @@ namespace Wox.ViewModel
             var queryText = QueryText.Trim();
             Task.Run(() =>
             {
-                if (!string.IsNullOrEmpty(queryText))
+                if (token.IsCancellationRequested) { return; }
+                var query = QueryBuilder.Build(queryText, _backgroundProcess, PluginManager.NonGlobalPlugins);
+                _lastQuery = query;
+                if (query != null)
                 {
+                    // handle the exclusiveness of plugin using action keyword
                     if (token.IsCancellationRequested) { return; }
-                    var query = QueryBuilder.Build(queryText, _backgroundProcess, PluginManager.NonGlobalPlugins);
-                    _lastQuery = query;
-                    if (query != null)
+
+                    Task.Delay(200, token).ContinueWith(_ =>
                     {
-                        // handle the exclusiveness of plugin using action keyword
-                        if (token.IsCancellationRequested) { return; }
-
-                        Task.Delay(200, token).ContinueWith(_ =>
+                        Logger.WoxTrace($"progressbar visible 1 {token.GetHashCode()} {token.IsCancellationRequested}  {Thread.CurrentThread.ManagedThreadId}  {query} {ProgressBarVisibility}");
+                        // start the progress bar if query takes more than 200 ms
+                        if (!token.IsCancellationRequested)
                         {
-                            Logger.WoxTrace($"progressbar visible 1 {token.GetHashCode()} {token.IsCancellationRequested}  {Thread.CurrentThread.ManagedThreadId}  {query} {ProgressBarVisibility}");
-                            // start the progress bar if query takes more than 200 ms
-                            if (!token.IsCancellationRequested)
-                            {
-                                ProgressBarVisibility = Visibility.Visible;
-                            }
-                        }, token);
-
-
-                        if (token.IsCancellationRequested) { return; }
-                        var plugins = PluginManager.AllPlugins;
-
-                        var option = new ParallelOptions()
-                        {
-                            CancellationToken = token,
-                        };
-                        CountdownEvent countdown = new CountdownEvent(plugins.Count);
-
-                        foreach (var plugin in plugins)
-                        {
-                            Task.Run(() =>
-                            {
-                                if (token.IsCancellationRequested)
-                                {
-                                    Logger.WoxTrace($"canceled {token.GetHashCode()} {Thread.CurrentThread.ManagedThreadId}  {queryText} {plugin.Metadata.Name}");
-                                    countdown.Signal();
-                                    return;
-                                }
-                                var results = PluginManager.QueryForPlugin(plugin, query);
-                                if (token.IsCancellationRequested)
-                                {
-                                    Logger.WoxTrace($"canceled {token.GetHashCode()} {Thread.CurrentThread.ManagedThreadId}  {queryText} {plugin.Metadata.Name}");
-                                    countdown.Signal();
-                                    return;
-                                }
-
-                                _resultsQueue.Add(new ResultsForUpdate(results, plugin.Metadata, query, token, countdown));
-                            }, token).ContinueWith(ErrorReporting.UnhandledExceptionHandleTask, TaskContinuationOptions.OnlyOnFaulted);
+                            ProgressBarVisibility = Visibility.Visible;
                         }
+                    }, token);
 
+
+                    if (token.IsCancellationRequested) { return; }
+                    var plugins = PluginManager.AllPlugins;
+
+                    var option = new ParallelOptions()
+                    {
+                        CancellationToken = token,
+                    };
+                    CountdownEvent countdown = new CountdownEvent(plugins.Count);
+
+                    foreach (var plugin in plugins)
+                    {
                         Task.Run(() =>
                         {
-                            Logger.WoxTrace($"progressbar visible 2 {token.GetHashCode()} {token.IsCancellationRequested}  {Thread.CurrentThread.ManagedThreadId}  {query} {ProgressBarVisibility}");
-                            // wait all plugins has been processed
-                            try
+                            if (token.IsCancellationRequested)
                             {
-                                countdown.Wait(token);
-                            }
-                            catch (OperationCanceledException)
-                            {
-                                // todo: why we need hidden here and why progress bar is not working
-                                ProgressBarVisibility = Visibility.Hidden;
+                                Logger.WoxTrace($"canceled {token.GetHashCode()} {Thread.CurrentThread.ManagedThreadId}  {queryText} {plugin.Metadata.Name}");
+                                countdown.Signal();
                                 return;
                             }
-                            if (!token.IsCancellationRequested)
+                            var results = PluginManager.QueryForPlugin(plugin, query);
+                            if (token.IsCancellationRequested)
                             {
-                                // used to cancel previous progress bar visible task
-                                source.Cancel();
-                                source.Dispose();
-                                // update to hidden if this is still the current query
-                                ProgressBarVisibility = Visibility.Hidden;
+                                Logger.WoxTrace($"canceled {token.GetHashCode()} {Thread.CurrentThread.ManagedThreadId}  {queryText} {plugin.Metadata.Name}");
+                                countdown.Signal();
+                                return;
                             }
-                        });
 
-
+                            _resultsQueue.Add(new ResultsForUpdate(results, plugin.Metadata, query, token, countdown));
+                        }, token).ContinueWith(ErrorReporting.UnhandledExceptionHandleTask, TaskContinuationOptions.OnlyOnFaulted);
                     }
-                }
-                else
-                {
-                    Results.Clear();
-                    Results.Visbility = Visibility.Collapsed;
+
+                    Task.Run(() =>
+                    {
+                        Logger.WoxTrace($"progressbar visible 2 {token.GetHashCode()} {token.IsCancellationRequested}  {Thread.CurrentThread.ManagedThreadId}  {query} {ProgressBarVisibility}");
+                        // wait all plugins has been processed
+                        try
+                        {
+                            countdown.Wait(token);
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            // todo: why we need hidden here and why progress bar is not working
+                            ProgressBarVisibility = Visibility.Hidden;
+                            return;
+                        }
+                        if (!token.IsCancellationRequested)
+                        {
+                            // used to cancel previous progress bar visible task
+                            source.Cancel();
+                            source.Dispose();
+                            // update to hidden if this is still the current query
+                            ProgressBarVisibility = Visibility.Hidden;
+                        }
+                    });
+
+
                 }
             }, token).ContinueWith(ErrorReporting.UnhandledExceptionHandleTask, TaskContinuationOptions.OnlyOnFaulted);
 
