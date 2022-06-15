@@ -119,16 +119,6 @@ namespace Wox.Infrastructure.UserSettings
         public bool IgnoreHotkeysOnFullscreen { get; set; }
 
         public HttpProxy Proxy { get; set; } = new HttpProxy();
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LastQueryMode LastQueryMode { get; set; } = LastQueryMode.Selected;
-    }
-
-    public enum LastQueryMode
-    {
-        Selected,
-        Empty,
-        Preserved
     }
 
     [Obsolete]

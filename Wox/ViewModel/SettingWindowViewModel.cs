@@ -106,29 +106,6 @@ namespace Wox.ViewModel
 
         #region general
 
-        // todo a better name?
-        public class LastQueryMode
-        {
-            public string Display { get; set; }
-            public Infrastructure.UserSettings.LastQueryMode Value { get; set; }
-        }
-        public List<LastQueryMode> LastQueryModes
-        {
-            get
-            {
-                List<LastQueryMode> modes = new List<LastQueryMode>();
-                var enums = (Infrastructure.UserSettings.LastQueryMode[])Enum.GetValues(typeof(Infrastructure.UserSettings.LastQueryMode));
-                foreach (var e in enums)
-                {
-                    var key = $"LastQuery{e}";
-                    var display = _translater.GetTranslation(key);
-                    var m = new LastQueryMode { Display = display, Value = e, };
-                    modes.Add(m);
-                }
-                return modes;
-            }
-        }
-
         public string Language
         {
             get

@@ -708,29 +708,14 @@ namespace Wox.ViewModel
 
         private void OnHotkey(object sender, HotkeyEventArgs e)
         {
-            _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
-            OnPropertyChanged(nameof(ProcessName));
-            OnPropertyChanged(nameof(ProcessIcon));
-
             if (!ShouldIgnoreHotkeys())
             {
+                ChangeQueryText(string.Empty);
 
-                if (_settings.LastQueryMode == LastQueryMode.Empty)
-                {
-                    ChangeQueryText(string.Empty);
-                }
-                else if (_settings.LastQueryMode == LastQueryMode.Preserved)
-                {
-                    LastQuerySelected = true;
-                }
-                else if (_settings.LastQueryMode == LastQueryMode.Selected)
-                {
-                    LastQuerySelected = false;
-                }
-                else
-                {
-                    throw new ArgumentException($"wrong LastQueryMode: <{_settings.LastQueryMode}>");
-                }
+                // be aware of background process
+                _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
+                OnPropertyChanged(nameof(ProcessName));
+                OnPropertyChanged(nameof(ProcessIcon));
 
                 ToggleWox();
                 e.Handled = true;
