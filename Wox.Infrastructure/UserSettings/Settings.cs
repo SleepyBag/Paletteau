@@ -102,7 +102,7 @@ namespace Wox.Infrastructure.UserSettings
         public bool EnableUpdateLog { get; set; }
 
         public bool StartWoxOnSystemStartup { get; set; } = true;
-        public bool HideOnStartup { get; set; }
+        public bool HideOnStartup { get; set; } = true;
         bool _hideNotifyIcon { get; set; }
         public bool HideNotifyIcon
         {

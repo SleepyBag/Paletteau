@@ -710,12 +710,14 @@ namespace Wox.ViewModel
         {
             if (!ShouldIgnoreHotkeys())
             {
-                ChangeQueryText(string.Empty);
-
                 // be aware of background process
                 _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
                 OnPropertyChanged(nameof(ProcessName));
                 OnPropertyChanged(nameof(ProcessIcon));
+
+                ChangeQueryText(string.Empty);
+                Results.Visbility = Visibility.Collapsed;    // hide the results from the previous call
+                Query();                                     // first query before any text change event
 
                 ToggleWox();
                 e.Handled = true;

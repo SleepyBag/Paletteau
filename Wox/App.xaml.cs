@@ -129,6 +129,8 @@ namespace Wox
 
                 Logger.WoxInfo($"SDK Info: {ExceptionFormatter.SDKInfo()}");
                 Logger.WoxInfo("End Wox startup ----------------------------------------------------  ");
+
+                API.ShowMsg($"Wox Started", $"Happy commanding!!!", "", false);
             });
         }
 
