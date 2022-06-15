@@ -1,13 +1,13 @@
 {
     "ID":"CEA1FDFC6D3B4085823D60DC76F28845",
     "ActionKeyword":"*",
-    "Name":"Platte",
-    "Description":"Platte",
+    "Name":"Palette",
+    "Description":"Palette",
     "Author":"Qianming Xue",
     "Version":"1.0.0",
     "Language":"csharp",
-    "Website":"https://www.baidu.com",
-    "ExecuteFileName":"Platte.dll",
+    "Website":"",
+    "ExecuteFileName":"Palette.dll",
     "IcoPath":"Images\\app.png",
     "Disabled": false
 }

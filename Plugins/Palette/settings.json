@@ -1,5 +1,5 @@
 {
-  "plattes": {
+  "palettes": {
     "SourceTree": [
       {"action": "^n", "description": "Clone/New...", "type":  "key"},
       {"action": "^o", "description": "Open new project...", "type": "key"},

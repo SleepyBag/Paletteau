@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platte
+namespace Palette
 {
     using CommandTable = List<ActionItem>;               // command table type for a specific program
 
@@ -22,7 +22,7 @@ namespace Platte
 
     internal class Setting
     {
-        [JsonProperty("plattes")]
+        [JsonProperty("palettes")]
         public Dictionary<string, CommandTable> commandTables { get; set; }
 
         public static Setting ReadSetting(string filename)

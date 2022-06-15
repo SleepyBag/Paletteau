@@ -12,7 +12,7 @@ using System.Threading;
 using static Wox.Infrastructure.StringMatcher;
 using Wox.Infrastructure;
 
-namespace Platte
+namespace Palette
 {
     class Main : IPlugin
     {
