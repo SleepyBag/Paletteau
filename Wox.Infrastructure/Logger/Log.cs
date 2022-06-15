@@ -82,10 +82,10 @@ namespace Wox.Infrastructure.Logger
             }
 
 #if DEBUG
-            if (throwException)
-            {
-                throw exception;
-            }
+            // if (throwException)
+            // {
+            //     throw exception;
+            // }
 #endif
         }
 

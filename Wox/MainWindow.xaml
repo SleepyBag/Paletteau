@@ -62,9 +62,16 @@
     <Border Style="{DynamicResource WindowBorderStyle}" MouseDown="OnMouseDown" >
         <StackPanel Orientation="Vertical">
             <Grid>
+                <Grid.ColumnDefinitions>			
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding ProcessIcon}"></Image>
                 <TextBox x:Name="QueryTextSuggestionBox"
                          Style="{DynamicResource QueryTextSuggestionBoxStyle}"
-                         IsEnabled="False">
+                         IsEnabled="False"
+                         Grid.Column="2">
                     <TextBox.Text>
                         <MultiBinding Converter="{StaticResource QuerySuggestionBoxConverter}">
                             <Binding ElementName="QueryTextBox" Path="Text"/>
@@ -78,7 +85,8 @@
                      PreviewDragOver="OnPreviewDragOver"
                      TextChanged="OnTextChanged"
                      AllowDrop="True"
-                     Visibility="Visible">
+                     Visibility="Visible"
+                     Grid.Column="2">
                     <TextBox.ContextMenu>
                         <ContextMenu>
                             <MenuItem Command="ApplicationCommands.Cut"  Header="{DynamicResource queryTextBoxMenuItemCut}"/>
