@@ -1,6 +1,8 @@
 {
     "plattes": {
         "msedge": [
+            {"action": "^+,", "description": "Toggle vertical tabs", "type": "key"},
+            {"action": "^+a", "description": "Search tabs", "type": "key"},
             {"action": "^+b", "description": "Show or hide the favorites bar", "type": "key"},
             {"action": "%+b", "description": "Set focus on the first item in the favorites bar", "type": "key"},
             {"action": "^d", "description": "Save the current tab as a favorite", "type": "key"},
