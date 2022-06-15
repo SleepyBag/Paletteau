@@ -57,7 +57,9 @@
     <Compile Include="Setting.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="settings.json" />
+    <Content Include="settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
