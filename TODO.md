@@ -1,5 +1,4 @@
 - palettes for more programs
- - sourcetree
 - dont show up if no palette available
 - per program history
 - show recent commands on top
