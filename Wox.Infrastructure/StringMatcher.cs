@@ -2,8 +2,11 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Windows.Controls;
+using System.Xml;
 using Wox.Infrastructure.Logger;
 using static Wox.Infrastructure.StringMatcher;
 
@@ -49,150 +52,122 @@ namespace Wox.Infrastructure
             MatchResult match = _cache[key] as MatchResult;
             if (match == null)
             {
-                match = FuzzyMatchRecurrsive(
-                    queryWithoutCase, translated, 0, 0, new List<int>()
-                );
+                //match = FuzzyMatchRecurrsive(
+                //    queryWithoutCase, translated, 0, 0, new List<int>()
+                //);
+
+                // calculate matching score using dynamic programming
+                // last dimension indicates whether it matches using the last character. It is used to find consecutive matches
+                // 0 - do not use the last character; 1 - use the last character
+                var maxConsecutive = Math.Min(queryWithoutCase.Length, 10);                                     // avoid explosion of memory usage
+                var maxScoreMatrix = new int[queryWithoutCase.Length + 1, translated.Length + 1, maxConsecutive + 1];
+                var matchedMatrix = new bool[queryWithoutCase.Length + 1, translated.Length + 1, maxConsecutive + 1];
+                var previousIndexMatrix = new (int, int, int)[queryWithoutCase.Length + 1, translated.Length + 1, maxConsecutive + 1];
+                // empty pattern matched all strings
+                for (int i = 0; i <= translated.Length; i++)
+                {
+                    matchedMatrix[0, i, 0] = true;
+                    for (int j = 1; j <= maxConsecutive; j++)
+                        maxScoreMatrix[0, i, j] = -100000000;
+                }
+                // dynamic programming match
+                for (int i = 1; i <= queryWithoutCase.Length; ++i)
+                {
+                    char queryChar = queryWithoutCase[i - 1];
+                    for (int j = 1; j <= translated.Length; ++j)
+                    {
+                        char currentChar = translated[j - 1];
+                        // the case of not to use current character
+                        maxScoreMatrix[i, j, 0] = -100000000;                  // don't overwrite negative bonus
+                        for (int k = 0; k <= maxConsecutive; k++)
+                            if (matchedMatrix[i, j - 1, k])
+                            {
+                                matchedMatrix[i, j, 0] = matchedMatrix[i, j, 0] || matchedMatrix[i, j - 1, k];
+                                if (maxScoreMatrix[i, j - 1, k] > maxScoreMatrix[i, j, 0]) {
+                                    maxScoreMatrix[i, j, 0] = maxScoreMatrix[i, j - 1, k];
+                                    if (k == 0)
+                                        previousIndexMatrix[i, j, 0] = previousIndexMatrix[i, j - 1, k];   // jump to the last match
+                                    else
+                                        previousIndexMatrix[i, j, 0] = (i, j - 1, k);
+                                }
+                            }
+                        // the case of to use current character
+                        for (int k = 1; k <= maxConsecutive; k++)
+                        {
+                            maxScoreMatrix[i, j, k] = -100000000;                      // don't overwrite negative bonus
+                        }
+                        if (Char.ToLower(queryChar) == Char.ToLower(currentChar))
+                        {
+                            for (int k = 1; k <= maxConsecutive + 1; k++)
+                            {
+                                if (matchedMatrix[i - 1, j - 1, k - 1])
+                                {
+                                    int bonus = 0;
+                                    int currentConsecutive = Math.Min(k, maxConsecutive);  // for the max consecutive, also continue from the same consecutive index
+                                    matchedMatrix[i, j, currentConsecutive] = true;
+                                    // penalty of first matching index - the later, the worse
+                                    if (i == 1)
+                                        bonus -= (j - 1) * 3;
+                                    // 30 bonus for matching beginning of camel case
+                                    if (Char.IsUpper(currentChar) && j != 1 && Char.IsLower(translated[j - 2]))
+                                        bonus += 30;
+                                    // 50 bonus for matching begining of a word
+                                    if (j == 1 || (Char.IsLetter(currentChar) && !Char.IsLetterOrDigit(translated[j - 2])))
+                                    {
+                                        bonus += 50;
+                                        if (Char.IsUpper(currentChar))
+                                            bonus += 50;                               // 50 bonus for upper case word
+                                    }
+                                    bonus += (k - 1) * 10;                             // 10 bonus for each consecutive match
+                                    maxScoreMatrix[i, j, currentConsecutive] = maxScoreMatrix[i - 1, j - 1, k - 1] + bonus;
+                                    if (k != 1)
+                                        previousIndexMatrix[i, j, currentConsecutive] = (i - 1, j - 1, k - 1);
+                                    else
+                                        previousIndexMatrix[i, j, currentConsecutive] = previousIndexMatrix[i - 1, j - 1, k - 1];   // jump to the last match
+                                }
+                            }
+                        }
+                    }
+                }
+                bool isMatch = false;
+                for (int k = 0; k <= maxConsecutive; k++)
+                    isMatch = isMatch || matchedMatrix[queryWithoutCase.Length, translated.Length, k];
+                if (isMatch)
+                {
+                    int maxStringIndex = -1;
+                    int maxConsecutiveIndex = -1;
+                    int maxScore = -100000000;
+                    // get the max score among all possibilities
+                    for (int index2 = 1; index2 <= translated.Length; index2++)
+                        for (int index3 = 0; index3 <= maxConsecutive; index3++)
+                            if (matchedMatrix[queryWithoutCase.Length, index2, index3] && maxScoreMatrix[queryWithoutCase.Length, index2, index3] > maxScore)
+                            {
+                                maxScore = maxScoreMatrix[queryWithoutCase.Length, index2, index3];
+                                maxStringIndex = index2;
+                                maxConsecutiveIndex = index3;
+                            }
+                    int unmatched = translated.Length - queryWithoutCase.Length;   // penalty of string length, 5 for each unmatched character
+                    maxScore -= (5 * unmatched);
+                    maxScore += 100;                                               // avoid negative scores
+                    List<int> matchList = new List<int>();
+                    (int, int, int) index = (queryWithoutCase.Length, maxStringIndex, maxConsecutiveIndex);
+                    while (index != (0, 0, 0))
+                    {
+                        matchList.Add(index.Item2 - 1);
+                        index = previousIndexMatrix[index.Item1, index.Item2, index.Item3];
+                    }
+                    matchList.Reverse();
+                    match = new MatchResult(isMatch, UserSettingSearchPrecision, matchList, maxScore);
+                }
+                else
+                    match = new MatchResult(isMatch, UserSettingSearchPrecision);
+
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.SlidingExpiration = new TimeSpan(12, 0, 0);
                 _cache.Set(key, match, policy);
             }
 
             return match;
-        }
-
-        public MatchResult FuzzyMatchRecurrsive(
-            string query, string stringToCompare, int queryCurrentIndex, int stringCurrentIndex, List<int> sourceMatchData
-        )
-        {
-            if (queryCurrentIndex == query.Length || stringCurrentIndex == stringToCompare.Length)
-            {
-                return new MatchResult(false, UserSettingSearchPrecision);
-            }
-
-            bool recursiveMatch = false;
-            List<int> bestRecursiveMatchData = new List<int>();
-            int bestRecursiveScore = 0;
-
-            List<int> matchs = new List<int>();
-            if (sourceMatchData.Count > 0)
-            {
-                foreach (var data in sourceMatchData)
-                {
-                    matchs.Add(data);
-                }
-            }
-
-            while (queryCurrentIndex < query.Length && stringCurrentIndex < stringToCompare.Length)
-            {
-                char queryLower = char.ToLower(query[queryCurrentIndex]);
-                char stringToCompareLower = char.ToLower(stringToCompare[stringCurrentIndex]);
-                if (queryLower == stringToCompareLower)
-                {
-                    MatchResult match = FuzzyMatchRecurrsive(
-                        query, stringToCompare, queryCurrentIndex, stringCurrentIndex + 1, matchs
-                    );
-
-                    if (match.Success)
-                    {
-                        if (!recursiveMatch || match.RawScore > bestRecursiveScore)
-                        {
-                            bestRecursiveMatchData = new List<int>();
-                            foreach (int data in match.MatchData)
-                            {
-                                bestRecursiveMatchData.Add(data);
-                            }
-                            bestRecursiveScore = match.Score;
-                        }
-                        recursiveMatch = true;
-                    }
-
-                    matchs.Add(stringCurrentIndex);
-                    queryCurrentIndex += 1;
-                }
-                stringCurrentIndex += 1;
-            }
-
-            bool matched = queryCurrentIndex == query.Length;
-            int outScore;
-            if (matched)
-            {
-                outScore = 100;
-                int penality = 3 * matchs[0];
-                outScore = outScore - penality;
-
-                int unmatched = stringToCompare.Length - matchs.Count;
-                outScore = outScore - (5 * unmatched);
-
-                int consecutiveMatch = 0;
-                for (int i = 0; i < matchs.Count; i++)
-                {
-                    int indexCurent = matchs[i];
-                    if (i > 0)
-                    {
-                        int indexPrevious = matchs[i - 1];
-                        if (indexCurent == indexPrevious + 1)
-                        {
-                            consecutiveMatch += 1;
-                            outScore += 10 * consecutiveMatch;
-                        } else
-                        {
-                            consecutiveMatch = 0;
-                        }
-                    }
-
-                    char current = stringToCompare[indexCurent];
-                    bool currentUpper = char.IsUpper(current);
-                    if (indexCurent > 0)
-                    {
-                        char neighbor = stringToCompare[indexCurent - 1];
-                        if (currentUpper && char.IsLower(neighbor))
-                        {
-                            outScore += 30;
-                        }
-
-                        bool isNeighbourSeparator = neighbor == '_' || neighbor == ' ';
-                        if (isNeighbourSeparator)
-                        {
-                            outScore += 50;
-                            if (currentUpper)
-                            {
-                                outScore += 50;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        outScore += 50;
-                        if (currentUpper)
-                        {
-                            outScore += 50;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                outScore = 0;
-            }
-
-            if (recursiveMatch && (!matched || bestRecursiveScore > outScore))
-            {
-                matchs = new List<int>();
-                foreach (int data in bestRecursiveMatchData)
-                {
-                    matchs.Add(data);
-                }
-                outScore = bestRecursiveScore;
-                return new MatchResult(true, UserSettingSearchPrecision, matchs, outScore);
-            }
-            else if (matched)
-            {
-                return new MatchResult(true, UserSettingSearchPrecision, matchs, outScore);
-            }
-            else
-            {
-                return new MatchResult(false, UserSettingSearchPrecision);
-            }
         }
 
         public enum SearchPrecisionScore
