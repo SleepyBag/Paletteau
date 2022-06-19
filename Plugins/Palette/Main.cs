@@ -11,6 +11,7 @@ using Wox.Plugin;
 using System.Threading;
 using static Wox.Infrastructure.StringMatcher;
 using Wox.Infrastructure;
+using System.Collections.Specialized;
 
 namespace Palette
 {
@@ -32,8 +33,51 @@ namespace Palette
         #endregion
 
         Setting setting;
+        Process curProcess;                                         // for increamntal filtering
+        Dictionary<String, List<Int32>> matchingCache;              // for increamntal filtering
+        List<ActionItem> commandTable;                              // for incremental filtering
 
-        public Process GetActiveProcess()
+        // check if needle is a subsequence of hay
+        private static bool IsSubsequence(string hay, string needle)
+        {
+            // empty string is always the subsequence of other string
+            if (needle.Length == 0)
+            {
+                return true;
+            }
+            // check if subsequence
+            for(int i = 0, j = 0; i < hay.Length; ++i)
+            {
+                if (hay[i] == needle[j])
+                {
+                    ++j;
+                }
+                if (j == needle.Length)
+                    return true;
+            }
+            return false;
+        }
+
+        // get the list of matching items' indices
+        private List<Int32> GetMatchingRange(string query)
+        {
+            if (matchingCache.ContainsKey(query))
+                return matchingCache[query];
+            // sort keys from longer to shorter
+            var cachedKeys = matchingCache.Keys.OrderBy(key => -key.Length).ToList();
+            // check if there is a subsequence matched before
+            foreach(string cachedKey in matchingCache.Keys)
+            {
+                if (IsSubsequence(query, cachedKey))
+                {
+                    return matchingCache[cachedKey];
+                }
+            }
+            // if no subsequene matched before, all the indices could be in the range
+            return Enumerable.Range(0, commandTable.Count()).ToList();
+        }
+
+        private Process GetActiveProcess()
         {
             IntPtr handle = GetForegroundWindow();
             uint pID;
@@ -50,12 +94,26 @@ namespace Palette
             {
                 return new List<Result>();
             }
-            var commandTable = setting.commandTables[process.ProcessName];
+            // cached information of current process
+            if (process.ProcessName != curProcess?.ProcessName)
+            {
+                curProcess = process;
+                commandTable = setting.commandTables[process.ProcessName];
+                matchingCache = new Dictionary<string, List<int>>();
+            }
+            
+            var matchingRange = GetMatchingRange(query.Search);
+            var matchedIndices = new List<Int32>();
             var results = new List<Result>();
-            foreach (var actionItem in commandTable) {
+            // only search for results in current matching range
+            foreach (int index in matchingRange) {
+                var actionItem = commandTable[index];
                 var matchResult = StringMatcher.FuzzySearch(query.Search, actionItem.description);
                 if (query.Search.Length == 0 || matchResult.Success)
                 {
+                    // put matched indices into cache
+                    matchedIndices.Add(index);
+                    // put item into result list
                     results.Add(new Result
                     {
                         Title = actionItem.description,
@@ -67,18 +125,26 @@ namespace Palette
                         {
                             Task.Run(() =>
                             {
-                                while (GetActiveProcess().Id != process.Id)
+                                // waiting for 3 seconds
+                                for (int i = 0; i < 30; i++)
                                 {
+                                    // if current process matched the target, send keys
+                                    if (GetActiveProcess().Id == process.Id)
+                                    {
+                                        SendKeys.SendWait(actionItem.action);
+                                        SendKeys.Flush();
+                                        return;
+                                    }
                                     Task.Delay(100);
                                 };
-                                SendKeys.SendWait(actionItem.action);
-                                SendKeys.Flush();
                             });
                             return true;
                         }
                     });
                 }
             }
+            // update cache
+            matchingCache[query.Search] = matchedIndices;
             return results;
         }
 
