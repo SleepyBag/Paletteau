@@ -87,10 +87,65 @@ namespace Palette
             return Process.GetProcessById((Int32)pID);
         }
 
+        static Dictionary<String, String> keyNameMapping = new Dictionary<string, string>
+        {
+            { "~", "↩" },
+            { " ", "␣" },
+            { "{ENTER}", "↩" },
+            { "{TAB}", "⭾" },
+            { "{DEL}", "␡" },
+            { "{DELETE}", "␡" },
+            { "{LEFT}", "←" },
+            { "{RIGHT}", "→" },
+            { "{UP}", "↑" },
+            { "{DOWN}", "↓" },
+            { "{BS}", "⇐" },
+            { "{BKSP}", "⇐" },
+            { "{BACKSPACE}", "⇐" },
+            { "{ADD}", "numpad+" },
+            { "{SUBTRACT}", "numpad-" },
+            { "{MULTIPLY}", "numpad*" },
+            { "{DIVIDE}", "numpad/" },
+        };
+
+        private static string TranslateKey(string key)
+        {
+            string translatedKey = "";
+            bool modifier = true;
+            while (modifier)
+            {
+                modifier = false;
+                if (key.StartsWith("^"))
+                {
+                    translatedKey += "Ctrl-";
+                    modifier = true;
+                } 
+                else if (key.StartsWith("+"))
+                {
+                    translatedKey += "Shift-";
+                    modifier = true;
+                }
+                else if (key.StartsWith("%"))
+                {
+                    translatedKey += "Alt-";
+                    modifier = true;
+                }
+                if (modifier)
+                    key = key.Substring(1);
+            }
+            if (keyNameMapping.ContainsKey(key))
+                translatedKey += keyNameMapping[key];
+            else if (!key.StartsWith("{"))
+                translatedKey += key.ToUpper();        // normal character
+            else if (key.EndsWith("}"))                // just in case. Don't crash on exceptional cases
+                translatedKey = key.Substring(1, key.Length - 2);
+            return translatedKey;
+        }
+
         public List<Result> Query(Query query)
         {
             var process = query.BackgroundProcess;
-            if (process == null)
+            if (process == null || !setting.commandTables.ContainsKey(process.ProcessName))
             {
                 return new List<Result>();
             }
@@ -117,7 +172,7 @@ namespace Palette
                     results.Add(new Result
                     {
                         Title = actionItem.description,
-                        SubTitle = actionItem.action,
+                        SubTitle = TranslateKey(actionItem.action),
                         // IcoPath = Path.Combine("Images", "app.png"),
                         Score = matchResult.Score,
                         TitleHighlightData = matchResult.MatchData,

@@ -64,7 +64,7 @@
         <Setter Property="FontWeight" Value="Medium" />
     </Style>
     <Style x:Key="BaseItemSubTitleStyle" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#D9D9D4" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
 
     <Style x:Key="BaseItemTitleSelectedStyle" TargetType="{x:Type TextBlock}">
@@ -73,7 +73,7 @@
         <Setter Property="FontWeight" Value="Medium" />
     </Style>
     <Style x:Key="BaseItemSubTitleSelectedStyle" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#D9D9D4" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
 
     <Style x:Key="BaseListboxStyle" TargetType="{x:Type ListBox}">
