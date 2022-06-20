@@ -33,6 +33,7 @@ namespace Palette
         #endregion
 
         Setting setting;
+        History history;
         Process curProcess;                                         // for increamntal filtering
         Dictionary<String, List<Int32>> matchingCache;              // for increamntal filtering
         List<ActionItem> commandTable;                              // for incremental filtering
@@ -174,12 +175,13 @@ namespace Palette
                         Title = actionItem.description,
                         SubTitle = TranslateKey(actionItem.action),
                         // IcoPath = Path.Combine("Images", "app.png"),
-                        Score = matchResult.Score,
+                        Score = matchResult.Score + history.GetCount(process, actionItem) * 1000000,      // history always first
                         TitleHighlightData = matchResult.MatchData,
                         Action = _ =>
                         {
                             Task.Run(() =>
                             {
+                                history.Hit(process, actionItem);
                                 // waiting for 3 seconds
                                 for (int i = 0; i < 30; i++)
                                 {
@@ -207,6 +209,9 @@ namespace Palette
         {
             setting = Setting.ReadSetting(
                 Path.Combine(context.CurrentPluginMetadata.PluginDirectory, "settings.json")
+            );
+            history = History.ReadHistory(
+                Path.Combine(context.CurrentPluginMetadata.PluginDirectory, "history.json")
             );
         }
     }
