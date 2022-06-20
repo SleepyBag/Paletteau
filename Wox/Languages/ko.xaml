@@ -47,7 +47,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">테마</system:String>
     <system:String x:Key="browserMoreThemes">테마 더 찾아보기</system:String>
-    <system:String x:Key="helloWox">Hello Wox</system:String>
+    <system:String x:Key="helloWox">Hello Paletteau</system:String>
     <system:String x:Key="queryBoxFont">쿼리 상자 글꼴</system:String>
     <system:String x:Key="resultItemFont">결과 항목 글꼴</system:String>
     <system:String x:Key="resultItemHighlightFont">Result Item Highlight Font</system:String>

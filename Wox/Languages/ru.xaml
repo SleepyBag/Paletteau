@@ -4,22 +4,22 @@
     <!--MainWindow-->
     <system:String x:Key="registerHotkeyFailed">Регистрация горячей клавиши {0} не удалась</system:String>
     <system:String x:Key="couldnotStartCmd">Не удалось запустить {0}</system:String>
-    <system:String x:Key="invalidWoxPluginFileFormat">Неверный формат файла Wox плагина</system:String>
+    <system:String x:Key="invalidWoxPluginFileFormat">Неверный формат файла Paletteau плагина</system:String>
     <system:String x:Key="setAsTopMostInThisQuery">Отображать выше всех в этом запросе</system:String>
     <system:String x:Key="cancelTopMostInThisQuery">Не отображать выше всех в этом запросе</system:String>
     <system:String x:Key="executeQuery">Выполнить запрос: {0}</system:String>
     <system:String x:Key="lastExecuteTime">Последний запуск: {0}</system:String>
     <system:String x:Key="iconTrayOpen">Открыть</system:String>
     <system:String x:Key="iconTraySettings">Настройки</system:String>
-    <system:String x:Key="iconTrayAbout">О Wox</system:String>
+    <system:String x:Key="iconTrayAbout">О Paletteau</system:String>
     <system:String x:Key="iconTrayExit">Закрыть</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Настройки Wox</system:String>
+    <system:String x:Key="wox_settings">Настройки Paletteau</system:String>
     <system:String x:Key="general">Основные</system:String>
     <system:String x:Key="portableMode">Портативный(portable) режим</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">Запускать Wox при загрузке системы</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">Скрывать Wox при потере фокуса</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">Запускать Paletteau при загрузке системы</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">Скрывать Paletteau при потере фокуса</system:String>
     <system:String x:Key="dontPromptUpdateMsg">Не отображать сообщение об возможности обновления</system:String>
     <system:String x:Key="rememberLastLocation">Запомнить последнее место запуска</system:String>
     <system:String x:Key="language">Язык</system:String>
@@ -33,7 +33,7 @@
     <system:String x:Key="autoUpdates">Автообновление</system:String>
     <system:String x:Key="updateToPrereleases">Обновлять до пре-релиза</system:String>
     <system:String x:Key="selectPythonDirectory">Выбрать</system:String>
-    <system:String x:Key="hideOnStartup">Скрыть Wox при загрузке</system:String>
+    <system:String x:Key="hideOnStartup">Скрыть Paletteau при загрузке</system:String>
     <system:String x:Key="hideNotifyIcon">Скрыть иконку в трее</system:String>
     <system:String x:Key="querySearchPrecision">Точность поискового запроса</system:String>
     <system:String x:Key="ShouldUsePinyin">Использовать Пиньинь(иероглифы)</system:String>
@@ -51,7 +51,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">Темы</system:String>
     <system:String x:Key="browserMoreThemes">Найти больше тем</system:String>
-    <system:String x:Key="helloWox">Привет Wox</system:String>
+    <system:String x:Key="helloWox">Привет Paletteau</system:String>
     <system:String x:Key="queryBoxFont">Шрифт запросов</system:String>
     <system:String x:Key="resultItemFont">Шрифт результатов</system:String>
     <system:String x:Key="resultItemHighlightFont">Шрифт выделения результатов</system:String>
@@ -62,7 +62,7 @@
     
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">Горячие клавиши</system:String>
-    <system:String x:Key="woxHotkey">Горячая клавиша Wox</system:String>
+    <system:String x:Key="woxHotkey">Горячая клавиша Paletteau</system:String>
     <system:String x:Key="customQueryHotkey">Пользовательские горячие клавиши</system:String>
     <system:String x:Key="delete">Удалить</system:String>
     <system:String x:Key="edit">Изменить</system:String>
@@ -87,12 +87,12 @@
     <system:String x:Key="proxyConnectFailed">Подключение к прокси серверу не удалось</system:String>
 
     <!--Setting About-->
-    <system:String x:Key="about">О Wox</system:String>
+    <system:String x:Key="about">О Paletteau</system:String>
     <system:String x:Key="website">Сайт</system:String>
     <system:String x:Key="version">Версия</system:String>
-    <system:String x:Key="about_activate_times">Вы воспользовались Wox уже {0} раз</system:String>
+    <system:String x:Key="about_activate_times">Вы воспользовались Paletteau уже {0} раз</system:String>
     <system:String x:Key="checkUpdates">Проверить oбновления</system:String>
-    <system:String x:Key="newVersionTips">Доступна новая версия {0}, пожалуйста перезапустите Wox.</system:String>
+    <system:String x:Key="newVersionTips">Доступна новая версия {0}, пожалуйста перезапустите Paletteau.</system:String>
     <system:String x:Key="checkUpdatesFailed">Check updates failed, please check your connection and proxy settings to api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Ошибка при загрузке обновления, пожалуйста проверьте свои настройки соединия и прокси к github-cloud.s3.amazonaws.com, 
@@ -134,14 +134,14 @@
     <system:String x:Key="reportWindow_sending">Отправляем</system:String>
     <system:String x:Key="reportWindow_report_succeed">Отчёт успешно отправлен</system:String>
     <system:String x:Key="reportWindow_report_failed">Не удалось отправить отчёт</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Произошёл сбой в Wox</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Произошёл сбой в Paletteau</system:String>
 
     <!--update-->
-    <system:String x:Key="update_wox_update_new_version_available">Доступна новая версия Wox {0}</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">Доступна новая версия Paletteau {0}</system:String>
     <system:String x:Key="update_wox_update_error">Произошла ошибка при попытке установить обновление</system:String>
     <system:String x:Key="update_wox_update">Обновить</system:String>
     <system:String x:Key="update_wox_update_cancel">Отмена</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">Это обновление перезапустит Wox</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">Это обновление перезапустит Paletteau</system:String>
     <system:String x:Key="update_wox_update_upadte_files">Следующие файлы будут обновлены</system:String>
     <system:String x:Key="update_wox_update_files">Обновить файлы</system:String>
     <system:String x:Key="update_wox_update_upadte_description">Описание обновления</system:String>

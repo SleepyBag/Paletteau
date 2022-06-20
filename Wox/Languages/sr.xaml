@@ -4,21 +4,21 @@
     <!--MainWindow-->
     <system:String x:Key="registerHotkeyFailed">Neuspešno registrovana prečica: {0}</system:String>
     <system:String x:Key="couldnotStartCmd">Neuspešno pokretanje {0}</system:String>
-    <system:String x:Key="invalidWoxPluginFileFormat">Nepravilni Wox plugin format datoteke</system:String>
+    <system:String x:Key="invalidWoxPluginFileFormat">Nepravilni Paletteau plugin format datoteke</system:String>
     <system:String x:Key="setAsTopMostInThisQuery">Postavi kao najviši u ovom upitu</system:String>
     <system:String x:Key="cancelTopMostInThisQuery">Poništi najviši u ovom upitu</system:String>
     <system:String x:Key="executeQuery">Izvrši upit: {0}</system:String>
     <system:String x:Key="lastExecuteTime">Vreme poslednjeg izvršenja: {0}</system:String>
     <system:String x:Key="iconTrayOpen">Otvori</system:String>
     <system:String x:Key="iconTraySettings">Podešavanja</system:String>
-    <system:String x:Key="iconTrayAbout">O Wox-u</system:String>
+    <system:String x:Key="iconTrayAbout">O Paletteau-u</system:String>
     <system:String x:Key="iconTrayExit">Izlaz</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Wox Podešavanja</system:String>
+    <system:String x:Key="wox_settings">Paletteau Podešavanja</system:String>
     <system:String x:Key="general">Opšte</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">Pokreni Wox pri podizanju sistema</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">Sakri Wox kada se izgubi fokus</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">Pokreni Paletteau pri podizanju sistema</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">Sakri Paletteau kada se izgubi fokus</system:String>
     <system:String x:Key="dontPromptUpdateMsg">Ne prikazuj obaveštenje o novoj verziji</system:String>
     <system:String x:Key="rememberLastLocation">Zapamti lokaciju poslednjeg pokretanja</system:String>
     <system:String x:Key="language">Jezik</system:String>
@@ -32,7 +32,7 @@
     <system:String x:Key="autoUpdates">Auto ažuriranje</system:String>
     <system:String x:Key="updateToPrereleases">Update to Prereleases</system:String>
     <system:String x:Key="selectPythonDirectory">Izaberi</system:String>
-    <system:String x:Key="hideOnStartup">Sakrij Wox pri podizanju sistema</system:String>
+    <system:String x:Key="hideOnStartup">Sakrij Paletteau pri podizanju sistema</system:String>
 
     <!--Setting Plugin-->
     <system:String x:Key="plugin">Plugin</system:String>
@@ -47,7 +47,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">Tema</system:String>
     <system:String x:Key="browserMoreThemes">Pretražite još tema</system:String>
-    <system:String x:Key="helloWox">Zdravo Wox</system:String>
+    <system:String x:Key="helloWox">Zdravo Paletteau</system:String>
     <system:String x:Key="queryBoxFont">Font upita</system:String>
     <system:String x:Key="resultItemFont">Font rezultata</system:String>
     <system:String x:Key="resultItemHighlightFont">Result Item Highlight Font</system:String>
@@ -56,7 +56,7 @@
 
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">Prečica</system:String>
-    <system:String x:Key="woxHotkey">Wox prečica</system:String>
+    <system:String x:Key="woxHotkey">Paletteau prečica</system:String>
     <system:String x:Key="customQueryHotkey">prečica za ručno dodat upit</system:String>
     <system:String x:Key="delete">Obriši</system:String>
     <system:String x:Key="edit">Izmeni</system:String>
@@ -81,12 +81,12 @@
     <system:String x:Key="proxyConnectFailed">Veza sa proksijem neuspešna</system:String>
 
     <!--Setting About-->
-    <system:String x:Key="about">O Wox-u</system:String>
+    <system:String x:Key="about">O Paletteau-u</system:String>
     <system:String x:Key="website">Veb sajt</system:String>
     <system:String x:Key="version">Verzija</system:String>
-    <system:String x:Key="about_activate_times">Aktivirali ste Wox {0} puta</system:String>
+    <system:String x:Key="about_activate_times">Aktivirali ste Paletteau {0} puta</system:String>
     <system:String x:Key="checkUpdates">Proveri ažuriranja</system:String>
-    <system:String x:Key="newVersionTips">Nove verzija {0} je dostupna, molim Vas ponovo pokrenite Wox.</system:String>
+    <system:String x:Key="newVersionTips">Nove verzija {0} je dostupna, molim Vas ponovo pokrenite Paletteau.</system:String>
     <system:String x:Key="checkUpdatesFailed">Neuspešna provera ažuriranja, molim Vas proverite vašu vezu i podešavanja za proksi prema api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Neuspešno preuzimanje ažuriranja, molim Vas proverite vašu vezu i podešavanja za proksi prema github-cloud.s3.amazonaws.com, 
@@ -128,14 +128,14 @@
     <system:String x:Key="reportWindow_sending">Slanje</system:String>
     <system:String x:Key="reportWindow_report_succeed">Izveštaj uspešno poslat</system:String>
     <system:String x:Key="reportWindow_report_failed">Izveštaj neuspešno poslat</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Wox je dobio grešku</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Paletteau je dobio grešku</system:String>
 
     <!--update-->
-    <system:String x:Key="update_wox_update_new_version_available">Nova verzija Wox-a {0} je dostupna</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">Nova verzija Paletteau-a {0} je dostupna</system:String>
     <system:String x:Key="update_wox_update_error">Došlo je do greške prilokom instalacije ažuriranja</system:String>
     <system:String x:Key="update_wox_update">Ažuriraj</system:String>
     <system:String x:Key="update_wox_update_cancel">Otkaži</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">Ova nadogradnja će ponovo pokrenuti Wox</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">Ova nadogradnja će ponovo pokrenuti Paletteau</system:String>
     <system:String x:Key="update_wox_update_upadte_files">Sledeće datoteke će biti ažurirane</system:String>
     <system:String x:Key="update_wox_update_files">Ažuriraj datoteke</system:String>
     <system:String x:Key="update_wox_update_upadte_description">Opis ažuriranja</system:String>

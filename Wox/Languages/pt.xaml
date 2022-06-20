@@ -15,11 +15,11 @@
     <system:String x:Key="iconTrayExit">Sair</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Definições Wox</system:String>
+    <system:String x:Key="wox_settings">Definições Paletteau</system:String>
     <system:String x:Key="general">Geral</system:String>
     <system:String x:Key="portableMode">Modo portátil</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">Iniciar Wox no arranque do sistema</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">Ocultar Wox ao perder o foco</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">Iniciar Paletteau no arranque do sistema</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">Ocultar Paletteau ao perder o foco</system:String>
     <system:String x:Key="dontPromptUpdateMsg">Não notificar acerca de novas versões</system:String>
     <system:String x:Key="rememberLastLocation">Memorizar última localização</system:String>
     <system:String x:Key="language">Idioma</system:String>
@@ -33,7 +33,7 @@
     <system:String x:Key="autoUpdates">Atualização automática</system:String>
     <system:String x:Key="updateToPrereleases">Atualizar para versões de teste</system:String>
     <system:String x:Key="selectPythonDirectory">Selecionar</system:String>
-    <system:String x:Key="hideOnStartup">Ocultar Wox ao iniciar</system:String>
+    <system:String x:Key="hideOnStartup">Ocultar Paletteau ao iniciar</system:String>
     <system:String x:Key="hideNotifyIcon">Ocultar ícone da bandeja</system:String>
     <system:String x:Key="querySearchPrecision">Precisão da pesquisa</system:String>
     <system:String x:Key="ShouldUsePinyin">Utilizar Pinyin</system:String>
@@ -51,7 +51,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">Tema</system:String>
     <system:String x:Key="browserMoreThemes">Procurar temas</system:String>
-    <system:String x:Key="helloWox">Olá Wox</system:String>
+    <system:String x:Key="helloWox">Olá Paletteau</system:String>
     <system:String x:Key="queryBoxFont">Tipo de letra da caixa de consulta</system:String>
     <system:String x:Key="resultItemFont">Tipo de letra dos resultados</system:String>
     <system:String x:Key="resultItemHighlightFont">Tipo de letra dos resultados destacados</system:String>
@@ -63,7 +63,7 @@
 
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">Tecla de atalho</system:String>
-    <system:String x:Key="woxHotkey">tecla de atalho Wox</system:String>
+    <system:String x:Key="woxHotkey">tecla de atalho Paletteau</system:String>
     <system:String x:Key="customQueryHotkey">Tecla de atalho para consulta personalizada</system:String>
     <system:String x:Key="delete">Eliminar</system:String>
     <system:String x:Key="edit">Editar</system:String>
@@ -91,9 +91,9 @@
     <system:String x:Key="about">Acerca</system:String>
     <system:String x:Key="website">Site</system:String>
     <system:String x:Key="version">Versão</system:String>
-    <system:String x:Key="about_activate_times">Ativou Wox {0} vezes</system:String>
+    <system:String x:Key="about_activate_times">Ativou Paletteau {0} vezes</system:String>
     <system:String x:Key="checkUpdates">Procurar atualizações</system:String>
-    <system:String x:Key="newVersionTips">Está disponível a versão {0}, deve reiniciar o Wox.</system:String>
+    <system:String x:Key="newVersionTips">Está disponível a versão {0}, deve reiniciar o Paletteau.</system:String>
     <system:String x:Key="checkUpdatesFailed">Não foi possível procurar atualizações. Verifique a sua ligação à Internet, as definições do proxy em api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Não foi possível descarregar as atualizações. Verifique a sua ligação à Internet, as definições do proxy em github-cloud.s3.amazonaws.com, 
@@ -135,14 +135,14 @@
     <system:String x:Key="reportWindow_sending">Enviando</system:String>
     <system:String x:Key="reportWindow_report_succeed">Relatório enviado com sucesso</system:String>
     <system:String x:Key="reportWindow_report_failed">O relatório não foi enviado</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Erro no Wox</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Erro no Paletteau</system:String>
 
     <!--update-->
     <system:String x:Key="update_wox_update_new_version_available">Está disponível a versão {0}</system:String>
     <system:String x:Key="update_wox_update_error">Ocorreu um erro ao tentar instalar a atualização</system:String>
     <system:String x:Key="update_wox_update">Atualizar</system:String>
     <system:String x:Key="update_wox_update_cancel">Cancelar</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">Esta atualização irá reiniciar Wox</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">Esta atualização irá reiniciar Paletteau</system:String>
     <system:String x:Key="update_wox_update_upadte_files">Os ficheiros seguintes serão atualizados</system:String>
     <system:String x:Key="update_wox_update_files">Atualizar ficheiros</system:String>
     <system:String x:Key="update_wox_update_upadte_description">Descrição da atualização</system:String>

@@ -56,7 +56,7 @@ namespace Wox.Core
                     if (newReleaseVersion <= currentVersion)
                     {
                         if (!silentIfLatestVersion)
-                            MessageBox.Show("You already have the latest Wox version");
+                            MessageBox.Show("You already have the latest Paletteau version");
                         updateManager.Dispose();
                         return;
                     }

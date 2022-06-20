@@ -4,7 +4,7 @@
     <!--MainWindow-->
     <system:String x:Key="registerHotkeyFailed">Kunne ikke registrere hurtigtast: {0}</system:String>
     <system:String x:Key="couldnotStartCmd">Kunne ikke starte {0}</system:String>
-    <system:String x:Key="invalidWoxPluginFileFormat">Ugyldig filformat for Wox-utvidelse</system:String>
+    <system:String x:Key="invalidWoxPluginFileFormat">Ugyldig filformat for Paletteau-utvidelse</system:String>
     <system:String x:Key="setAsTopMostInThisQuery">Sett til øverste for denne spørringen</system:String>
     <system:String x:Key="cancelTopMostInThisQuery">Avbryt øverste for denne spørringen</system:String>
     <system:String x:Key="executeQuery">Utfør spørring: {0}</system:String>
@@ -15,10 +15,10 @@
     <system:String x:Key="iconTrayExit">Avslutt</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Wox-innstillinger</system:String>
+    <system:String x:Key="wox_settings">Paletteau-innstillinger</system:String>
     <system:String x:Key="general">Generelt</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">Start Wox ved systemstart</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">Skjul Wox ved mistet fokus</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">Start Paletteau ved systemstart</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">Skjul Paletteau ved mistet fokus</system:String>
     <system:String x:Key="dontPromptUpdateMsg">Ikke vis varsel om ny versjon</system:String>
     <system:String x:Key="rememberLastLocation">Husk siste plassering</system:String>
     <system:String x:Key="language">Språk</system:String>
@@ -32,7 +32,7 @@
     <system:String x:Key="autoUpdates">Oppdater automatisk</system:String>
     <system:String x:Key="updateToPrereleases">Update to Prereleases</system:String>
     <system:String x:Key="selectPythonDirectory">Velg</system:String>
-    <system:String x:Key="hideOnStartup">Skjul Wox ved oppstart</system:String>
+    <system:String x:Key="hideOnStartup">Skjul Paletteau ved oppstart</system:String>
 
     <!--Setting Plugin-->
     <system:String x:Key="plugin">Utvidelse</system:String>
@@ -47,7 +47,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">Tema</system:String>
     <system:String x:Key="browserMoreThemes">Finn flere temaer</system:String>
-    <system:String x:Key="helloWox">Hallo Wox</system:String>
+    <system:String x:Key="helloWox">Hallo Paletteau</system:String>
     <system:String x:Key="queryBoxFont">Font for spørringsboks</system:String>
     <system:String x:Key="resultItemFont">Font for resultat</system:String>
     <system:String x:Key="resultItemHighlightFont">Result Item Highlight Font</system:String>
@@ -56,7 +56,7 @@
 
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">Hurtigtast</system:String>
-    <system:String x:Key="woxHotkey">Wox-hurtigtast</system:String>
+    <system:String x:Key="woxHotkey">Paletteau-hurtigtast</system:String>
     <system:String x:Key="customQueryHotkey">Egendefinerd spørringshurtigtast</system:String>
     <system:String x:Key="delete">Slett</system:String>
     <system:String x:Key="edit">Rediger</system:String>
@@ -84,9 +84,9 @@
     <system:String x:Key="about">Om</system:String>
     <system:String x:Key="website">Netside</system:String>
     <system:String x:Key="version">Versjon</system:String>
-    <system:String x:Key="about_activate_times">Du har aktivert Wox {0} ganger</system:String>
+    <system:String x:Key="about_activate_times">Du har aktivert Paletteau {0} ganger</system:String>
     <system:String x:Key="checkUpdates">Sjekk for oppdatering</system:String>
-    <system:String x:Key="newVersionTips">Ny versjon {0} er tilgjengelig, vennligst start Wox på nytt.</system:String>
+    <system:String x:Key="newVersionTips">Ny versjon {0} er tilgjengelig, vennligst start Paletteau på nytt.</system:String>
     <system:String x:Key="checkUpdatesFailed">Oppdateringssjekk feilet, vennligst sjekk tilkoblingen og proxy-innstillene for api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Nedlastning av oppdateringer feilet, vennligst sjekk tilkoblingen og proxy-innstillene for github-cloud.s3.amazonaws.com, 
@@ -128,14 +128,14 @@
     <system:String x:Key="reportWindow_sending">Sender</system:String>
     <system:String x:Key="reportWindow_report_succeed">Rapport sendt med suksess</system:String>
     <system:String x:Key="reportWindow_report_failed">Kunne ikke sende rapport</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Wox møtte på en feil</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Paletteau møtte på en feil</system:String>
 
     <!--update-->
-    <system:String x:Key="update_wox_update_new_version_available">Versjon {0} av Wox er nå tilgjengelig</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">Versjon {0} av Paletteau er nå tilgjengelig</system:String>
     <system:String x:Key="update_wox_update_error">En feil oppstod under installasjon av programvareoppdateringer</system:String>
     <system:String x:Key="update_wox_update">Oppdater</system:String>
     <system:String x:Key="update_wox_update_cancel">Avbryt</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">Denne opgraderingen vil starte Wox på nytt</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">Denne opgraderingen vil starte Paletteau på nytt</system:String>
     <system:String x:Key="update_wox_update_upadte_files">Følgende filer vil bli oppdatert</system:String>
     <system:String x:Key="update_wox_update_files">Oppdateringsfiler</system:String>
     <system:String x:Key="update_wox_update_upadte_description">Oppdateringsbeskrivelse</system:String>

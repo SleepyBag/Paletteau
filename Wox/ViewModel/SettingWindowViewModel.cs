@@ -48,7 +48,7 @@ namespace Wox.ViewModel
         {
             if (PortableMode)
             {
-                MessageBox.Show("Portable mode need check update manually in https://github.com/Wox-launcher/Wox/releases");
+                MessageBox.Show("Portable mode need check update manually in https://github.com/SleepyBag/Paletteau/releases");
             }
             else
             {
@@ -287,34 +287,34 @@ namespace Wox.ViewModel
                 {
                     new Result
                     {
-                        Title = "WoX is a launcher for Windows that simply works.",
-                        SubTitle = "You can call it Windows omni-eXecutor if you want a long name.",
+                        Title = "Paletteau is a global command palette.",
+                        SubTitle = "Ctrl-A",
                         IcoPath = "Images/app.png"
                     },
                     new Result
                     {
-                        Title = "Search for everything—applications, folders, files and more.",
-                        SubTitle = "Use pinyin to search for programs. (yyy / wangyiyun → 网易云音乐)",
+                        Title = "Use pinyin to search for programs. (yyy / wangyiyun → 网易云音乐)",
+                        SubTitle = "Ctrl-Shift-B",
                         IcoPath = "Images/search.png"
                     },
-                    new Result
-                    {
-                        Title = "Keyword plugin search.",
-                        SubTitle = "search google with g search_term.",
-                        IcoPath = "Images/browser.png"
-                    },
-                    new Result
-                    {
-                        Title = "Build custom themes at: ",
-                        SubTitle = Theme,
-                        IcoPath = "Images/color.png"
-                    },
-                    new Result
-                    {
-                        Title = "Install plugins from: ",
-                        SubTitle = Plugin,
-                        IcoPath = "Images/plugin.png"
-                    },
+                    //new Result
+                    //{
+                    //    Title = "Keyword plugin search.",
+                    //    SubTitle = "search google with g search_term.",
+                    //    IcoPath = "Images/browser.png"
+                    //},
+                    //new Result
+                    //{
+                    //    Title = "Build custom themes at: ",
+                    //    SubTitle = Theme,
+                    //    IcoPath = "Images/color.png"
+                    //},
+                    //new Result
+                    //{
+                    //    Title = "Install plugins from: ",
+                    //    SubTitle = Plugin,
+                    //    IcoPath = "Images/plugin.png"
+                    //},
                     new Result
                     {
                         Title = $"Open Source: {_updater.GitHubRepository}",

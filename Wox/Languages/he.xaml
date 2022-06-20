@@ -15,12 +15,12 @@
     <system:String x:Key="iconTrayExit">יציאה</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Wox הגדרות</system:String>
+    <system:String x:Key="wox_settings">Paletteau הגדרות</system:String>
     <system:String x:Key="general">כללי</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">הפעל את Wox בעליית המחשב</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">הסתר את Wox כשהפוקוס נאבד</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">הפעל את Paletteau בעליית המחשב</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">הסתר את Paletteau כשהפוקוס נאבד</system:String>
     <system:String x:Key="dontPromptUpdateMsg">אל תראה התראות על גרסאות חדשות</system:String>
-    <system:String x:Key="rememberLastLocation">זכור את המיקום של ההרצה האחרונה של Wox</system:String>
+    <system:String x:Key="rememberLastLocation">זכור את המיקום של ההרצה האחרונה של Paletteau</system:String>
     <system:String x:Key="language">שפה</system:String>
     <system:String x:Key="lastQueryMode">סגנון השאילתא האחרונה</system:String>
     <system:String x:Key="LastQueryPreserved">שמור את השאילתה האחרונה</system:String>
@@ -32,7 +32,7 @@
     <system:String x:Key="autoUpdates">עדכן אוטומטית</system:String>
     <system:String x:Key="updateToPrereleases">עדכן לגרסת בטא</system:String>
     <system:String x:Key="selectPythonDirectory">בחר</system:String>
-    <system:String x:Key="hideOnStartup">החבא את Wox בעליה</system:String>
+    <system:String x:Key="hideOnStartup">החבא את Paletteau בעליה</system:String>
     <system:String x:Key="hideNotifyIcon">החבא את סמל מגש המערכת</system:String>
     <system:String x:Key="querySearchPrecision">דיוק של שאילתת חיפוש</system:String>
     <system:String x:Key="ShouldUsePinyin">השתמש ב Pinyin</system:String>
@@ -50,7 +50,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">ערכת נושא</system:String>
     <system:String x:Key="browserMoreThemes">גלוש לעוד ערכות נושא</system:String>
-    <system:String x:Key="helloWox">שלום Wox</system:String>
+    <system:String x:Key="helloWox">שלום Paletteau</system:String>
     <system:String x:Key="queryBoxFont">גופן של תיבת השאילתא</system:String>
     <system:String x:Key="resultItemFont">גופן של פריטי התוצאות</system:String>
     <system:String x:Key="resultItemHighlightFont">גופן של פריט חיפוש מסומן</system:String>
@@ -61,7 +61,7 @@
 
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">קיצור דרך</system:String>
-    <system:String x:Key="woxHotkey">קיצור דרך להפעלת Wox</system:String>
+    <system:String x:Key="woxHotkey">קיצור דרך להפעלת Paletteau</system:String>
     <system:String x:Key="customQueryHotkey">קיצורי דרך מותאמים אישית</system:String>
     <system:String x:Key="delete">מחק</system:String>
     <system:String x:Key="edit">ערוך</system:String>
@@ -89,9 +89,9 @@
     <system:String x:Key="about">אודות</system:String>
     <system:String x:Key="website">אתר</system:String>
     <system:String x:Key="version">גרסה</system:String>
-    <system:String x:Key="about_activate_times">הפעלת את Wox {0} פעמים</system:String>
+    <system:String x:Key="about_activate_times">הפעלת את Paletteau {0} פעמים</system:String>
     <system:String x:Key="checkUpdates">חפש עדכונים</system:String>
-    <system:String x:Key="newVersionTips">קיימת גרסה חדשה {0}, אנא אתחל את Wox.</system:String>
+    <system:String x:Key="newVersionTips">קיימת גרסה חדשה {0}, אנא אתחל את Paletteau.</system:String>
     <system:String x:Key="checkUpdatesFailed">חיפוש עדכונים נכשל, אנא בדוק את הגדרות החיבור והפרוקסי אל מול api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         הורדת העדכונים נכשלה, אנא בדוק את הגדרות החיבור והפרוקסי אל מול github-cloud.s3.amazonaws.com,
@@ -133,14 +133,14 @@
     <system:String x:Key="reportWindow_sending">שולח</system:String>
     <system:String x:Key="reportWindow_report_succeed">הדוח נשלח בהצלחה</system:String>
     <system:String x:Key="reportWindow_report_failed">כשל בשליחת הדוח</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Wox נתקל בשגיאה</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Paletteau נתקל בשגיאה</system:String>
 
     <!--update-->
-    <system:String x:Key="update_wox_update_new_version_available">גרסה חדשה של Wox {0} זמינה כעת</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">גרסה חדשה של Paletteau {0} זמינה כעת</system:String>
     <system:String x:Key="update_wox_update_error">שגיאה קרתה בזמן נסיון התקנת העדכון</system:String>
     <system:String x:Key="update_wox_update">עדכן</system:String>
     <system:String x:Key="update_wox_update_cancel">בטל</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">עדכון זה יאתחל את Wox</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">עדכון זה יאתחל את Paletteau</system:String>
     <system:String x:Key="update_wox_update_upadte_files">הקבצים הבאים יעודכנו</system:String>
     <system:String x:Key="update_wox_update_files">קבצי התקנה של העדכון</system:String>
     <system:String x:Key="update_wox_update_upadte_description">תאור של העדכון</system:String>

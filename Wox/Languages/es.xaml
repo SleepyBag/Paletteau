@@ -4,7 +4,7 @@
     <! - MainWindow ->
     <system:String x:Key="registerHotkeyFailed">Error al registrar la tecla de acceso rápido: {0}</system:String>
     <system:String x:Key="couldnotStartCmd">No se pudo iniciar {0}</system:String>
-    <system:String x:Key="invalidWoxPluginFileFormat">Formato de archivo del complemento Wox no válido</system:String>
+    <system:String x:Key="invalidWoxPluginFileFormat">Formato de archivo del complemento Paletteau no válido</system:String>
     <system:String x:Key="setAsTopMostInThisQuery">Establecer como superior en esta búsqueda</​​system:String>
     <system:String x:Key="cancelTopMostInThisQuery">Cancelar en la parte superior de esta búsqueda</​​system:String>
     <system:String x:Key="executeQuery">Ejecutar búsqueda: {0}</system:String>
@@ -15,10 +15,10 @@
     <system:String x:Key="iconTrayExit">Salir</system:String>
 
     <! - Configuración general ->
-    <system:String x:Key="wox_settings">Configuración de Wox</system:String>
+    <system:String x:Key="wox_settings">Configuración de Paletteau</system:String>
     <system:String x:Key="general">General</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">Iniciar Wox al iniciar el sistema</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">Ocultar Wox cuando se pierde el foco</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">Iniciar Paletteau al iniciar el sistema</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">Ocultar Paletteau cuando se pierde el foco</system:String>
     <system:String x:Key="dontPromptUpdateMsg">No mostrar notificaciones de nueva versión</system:String>
     <system:String x:Key="rememberLastLocation">Recordar la última ubicación de inicio</system:String>
     <system:String x:Key="language">Idioma</system:String>
@@ -32,7 +32,7 @@
     <system:String x:Key="autoUpdates">Actualización automática</system:String>
     <system:String x:Key="updateToPrereleases">Actualizaciones Beta</system:String>
     <system:String x:Key="selectPythonDirectory">Seleccionar</system:String>
-    <system:String x:Key="hideOnStartup">Ocultar Wox al inicio</system:String>
+    <system:String x:Key="hideOnStartup">Ocultar Paletteau al inicio</system:String>
     <system:String x:Key="hideNotifyIcon">Ocultar el icono de la bandeja</system:String>
     <system:String x:Key="querySearchPrecision">Precisión de búsqueda</​​system:String>
     <system:String x:Key="shouldUsePinyin">Usar Pinyin</system:String>
@@ -50,7 +50,7 @@
     <! - Tema de configuración ->
     <system:String x:Key="theme">Tema</system:String>
     <system:String x:Key="browserMoreThemes">Buscar más temas</system:String>
-    <system:String x:Key="helloWox">Hola Wox</system:String>
+    <system:String x:Key="helloWox">Hola Paletteau</system:String>
     <system:String x:Key="queryBoxFont">Fuente del cuadro de búsqueda</​​system:String>
     <system:String x:Key="resultItemFont">Fuente del elemento de resultado</system:String>
     <system:String x:Key="resultItemHighlightFont">Fuente de resaltado del elemento de resultado</system:String>
@@ -61,7 +61,7 @@
 
     <! - Configuración de teclas de acceso rápido ->
     <system:String x:Key="hotkey">Hotkey</system:String>
-    <system:String x:Key="woxHotkey">Wox Hotkey</system:String>
+    <system:String x:Key="woxHotkey">Paletteau Hotkey</system:String>
     <system:String x:Key="customQueryHotkey">Tecla rápida de búsqueda personalizada</system:String>
     <system:String x:Key="delete">Eliminar</system:String>
     <system:String x:Key="edit">Editar</system:String>
@@ -89,9 +89,9 @@
     <system:String x:Key="about">Acerca de</system:String>
     <system:String x:Key="website">Sitio web</system:String>
     <system:String x:Key="version">Versión</system:String>
-    <system:String x:Key="about_activate_times">Ha activado Wox {0} veces</system:String>
+    <system:String x:Key="about_activate_times">Ha activado Paletteau {0} veces</system:String>
     <system:String x:Key="checkUpdates">Buscar actualizaciones</system:String>
-    <system:String x:Key="newVersionTips">Nueva versión {0} disponible, reinicie Wox.</system:String>
+    <system:String x:Key="newVersionTips">Nueva versión {0} disponible, reinicie Paletteau.</system:String>
     <system:String x:Key="checkUpdatesFailed">Las actualizaciones de verificación fallaron, verifique su conexión y configuración de proxy a api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         La desacrga de actualizaciones falló, verifique su conexión y configuración de proxy a github-cloud.s3.amazonaws.com,
@@ -133,14 +133,14 @@
     <system:String x:Key="reportWindow_sending">Envío</system:String>
     <system:String x:Key="reportWindow_report_succeed">Informe enviado correctamente</system:String>
     <system:String x:Key="reportWindow_report_failed">Error al enviar el informe</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Wox recibió un error</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Paletteau recibió un error</system:String>
 
 	<! - Actualizar ->
-    <system:String x:Key="update_wox_update_new_version_available">La nueva versión de Wox {0} ya está disponible</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">La nueva versión de Paletteau {0} ya está disponible</system:String>
     <system:String x:Key="update_wox_update_error">Se produjo un error al intentar instalar actualizaciones de software</system:String>
     <system:String x:Key="update_wox_update">Actualización</system:String>
     <system:String x:Key="update_wox_update_cancel">Cancelar</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">Esta actualización reiniciará Wox</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">Esta actualización reiniciará Paletteau</system:String>
     <system:String x:Key="update_wox_update_upadte_files">Los siguientes archivos se actualizarán</system:String>
     <system:String x:Key="update_wox_update_files">Actualizar archivos</system:String>
     <system:String x:Key="update_wox_update_upadte_description">Descripción de la actualización</system:String>

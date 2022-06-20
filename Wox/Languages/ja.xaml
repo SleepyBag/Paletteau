@@ -4,21 +4,21 @@
     <!--MainWindow-->
     <system:String x:Key="registerHotkeyFailed">ホットキー「{0}」の登録に失敗しました</system:String>
     <system:String x:Key="couldnotStartCmd">{0}の起動に失敗しました</system:String>
-    <system:String x:Key="invalidWoxPluginFileFormat">Woxプラグインの形式が正しくありません</system:String>
+    <system:String x:Key="invalidWoxPluginFileFormat">Paletteauプラグインの形式が正しくありません</system:String>
     <system:String x:Key="setAsTopMostInThisQuery">このクエリを最上位にセットする</system:String>
     <system:String x:Key="cancelTopMostInThisQuery">このクエリを最上位にセットをキャンセル</system:String>
     <system:String x:Key="executeQuery">次のコマンドを実行します:{0}</system:String>
     <system:String x:Key="lastExecuteTime">最終実行時間:{0}</system:String>
     <system:String x:Key="iconTrayOpen">開く</system:String>
     <system:String x:Key="iconTraySettings">設定</system:String>
-    <system:String x:Key="iconTrayAbout">Woxについて</system:String>
+    <system:String x:Key="iconTrayAbout">Paletteauについて</system:String>
     <system:String x:Key="iconTrayExit">終了</system:String>
 
     <!--Setting General-->
-    <system:String x:Key="wox_settings">Wox設定</system:String>
+    <system:String x:Key="wox_settings">Paletteau設定</system:String>
     <system:String x:Key="general">一般</system:String>
-    <system:String x:Key="startWoxOnSystemStartup">スタートアップ時にWoxを起動する</system:String>
-    <system:String x:Key="hideWoxWhenLoseFocus">フォーカスを失った時にWoxを隠す</system:String>
+    <system:String x:Key="startWoxOnSystemStartup">スタートアップ時にPaletteauを起動する</system:String>
+    <system:String x:Key="hideWoxWhenLoseFocus">フォーカスを失った時にPaletteauを隠す</system:String>
     <system:String x:Key="dontPromptUpdateMsg">最新版が入手可能であっても、アップグレードメッセージを表示しない</system:String>
     <system:String x:Key="rememberLastLocation">前回のランチャーの位置を記憶</system:String>
     <system:String x:Key="language">言語</system:String>
@@ -32,7 +32,7 @@
     <system:String x:Key="autoUpdates">自動更新</system:String>
     <system:String x:Key="updateToPrereleases">Update to Prereleases</system:String>
     <system:String x:Key="selectPythonDirectory">選択</system:String>
-    <system:String x:Key="hideOnStartup">起動時にWoxを隠す</system:String>
+    <system:String x:Key="hideOnStartup">起動時にPaletteauを隠す</system:String>
     <system:String x:Key="hideNotifyIcon">トレイアイコンを隠す</system:String>
     
     <!--Setting Plugin-->
@@ -48,7 +48,7 @@
     <!--Setting Theme-->
     <system:String x:Key="theme">テーマ</system:String>
     <system:String x:Key="browserMoreThemes">テーマを探す</system:String>
-    <system:String x:Key="helloWox">こんにちは Wox</system:String>
+    <system:String x:Key="helloWox">こんにちは Paletteau</system:String>
     <system:String x:Key="queryBoxFont">検索ボックスのフォント</system:String>
     <system:String x:Key="resultItemFont">検索結果一覧のフォント</system:String>
     <system:String x:Key="resultItemHighlightFont">Result Item Highlight Font</system:String>
@@ -59,7 +59,7 @@
     
     <!--Setting Hotkey-->
     <system:String x:Key="hotkey">ホットキー</system:String>
-    <system:String x:Key="woxHotkey">Wox ホットキー</system:String>
+    <system:String x:Key="woxHotkey">Paletteau ホットキー</system:String>
     <system:String x:Key="customQueryHotkey">カスタムクエリ ホットキー</system:String>
     <system:String x:Key="delete">削除</system:String>
     <system:String x:Key="edit">編集</system:String>
@@ -84,12 +84,12 @@
     <system:String x:Key="proxyConnectFailed">プロキシ接続に失敗しました</system:String>
 
     <!--Setting About-->
-    <system:String x:Key="about">Woxについて</system:String>
+    <system:String x:Key="about">Paletteauについて</system:String>
     <system:String x:Key="website">ウェブサイト</system:String>
     <system:String x:Key="version">バージョン</system:String>
-    <system:String x:Key="about_activate_times">あなたはWoxを {0} 回利用しました</system:String>
+    <system:String x:Key="about_activate_times">あなたはPaletteauを {0} 回利用しました</system:String>
     <system:String x:Key="checkUpdates">アップデートを確認する</system:String>
-    <system:String x:Key="newVersionTips">新しいバージョン {0} が利用可能です。Woxを再起動してください。</system:String>
+    <system:String x:Key="newVersionTips">新しいバージョン {0} が利用可能です。Paletteauを再起動してください。</system:String>
     <system:String x:Key="checkUpdatesFailed">アップデートの確認に失敗しました、api.github.com への接続とプロキシ設定を確認してください。</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         更新のダウンロードに失敗しました、github-cloud.s3.amazonaws.com への接続とプロキシ設定を確認するか、
@@ -131,14 +131,14 @@
     <system:String x:Key="reportWindow_sending">送信中</system:String>
     <system:String x:Key="reportWindow_report_succeed">クラッシュレポートの送信に成功しました</system:String>
     <system:String x:Key="reportWindow_report_failed">クラッシュレポートの送信に失敗しました</system:String>
-    <system:String x:Key="reportWindow_wox_got_an_error">Woxにエラーが発生しました</system:String>
+    <system:String x:Key="reportWindow_wox_got_an_error">Paletteauにエラーが発生しました</system:String>
 
     <!--update-->
-    <system:String x:Key="update_wox_update_new_version_available">Wox の最新バージョン V{0} が入手可能です</system:String>
-    <system:String x:Key="update_wox_update_error">Woxのアップデート中にエラーが発生しました</system:String>
+    <system:String x:Key="update_wox_update_new_version_available">Paletteau の最新バージョン V{0} が入手可能です</system:String>
+    <system:String x:Key="update_wox_update_error">Paletteauのアップデート中にエラーが発生しました</system:String>
     <system:String x:Key="update_wox_update">アップデート</system:String>
     <system:String x:Key="update_wox_update_cancel">キャンセル</system:String>
-    <system:String x:Key="update_wox_update_restart_wox_tip">このアップデートでは、Woxの再起動が必要です</system:String>
+    <system:String x:Key="update_wox_update_restart_wox_tip">このアップデートでは、Paletteauの再起動が必要です</system:String>
     <system:String x:Key="update_wox_update_upadte_files">次のファイルがアップデートされます</system:String>
     <system:String x:Key="update_wox_update_files">更新ファイル一覧</system:String>
     <system:String x:Key="update_wox_update_upadte_description">アップデートの詳細</system:String>

@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 #if DEBUG
 
 [assembly: AssemblyConfiguration("Debug")]
-[assembly: AssemblyDescription("Debug build, https://github.com/Wox-launcher/Wox")]
+[assembly: AssemblyDescription("Debug build, https://github.com/SleepyBag/Paletteau")]
 #else
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyDescription("Release build, https://github.com/Wox-launcher/Wox")]
+[assembly: AssemblyDescription("Release build, https://github.com/SleepyBag/Paletteau")]
 #endif
 
 [assembly: AssemblyCompany("Wox")]
