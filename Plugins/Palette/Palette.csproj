@@ -67,13 +67,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Wox.Infrastructure\Wox.Infrastructure.csproj">
+    <ProjectReference Include="..\..\Paletteau.Infrastructure\Paletteau.Infrastructure.csproj">
       <Project>{4fd29318-a8ab-4d8f-aa47-60bc241b8da3}</Project>
-      <Name>Wox.Infrastructure</Name>
+      <Name>Paletteau.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Wox.Plugin\Wox.Plugin.csproj">
+    <ProjectReference Include="..\..\Paletteau.Plugin\Paletteau.Plugin.csproj">
       <Project>{8451ECDD-2EA4-4966-BB0A-7BBC40138E80}</Project>
-      <Name>Wox.Plugin</Name>
+      <Name>Paletteau.Plugin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

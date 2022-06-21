@@ -57,12 +57,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Wox.Plugin\Wox.Plugin.csproj">
-      <Project>{8451ECDD-2EA4-4966-BB0A-7BBC40138E80}</Project>
-      <Name>Wox.Plugin</Name>
+    <ProjectReference Include="..\..\Paletteau.Plugin\Paletteau.Plugin.csproj">
+      <Project>{8451ecdd-2ea4-4966-bb0a-7bbc40138e80}</Project>
+      <Name>Paletteau.Plugin</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Images\app.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

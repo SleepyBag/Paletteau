@@ -5,13 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
-using Wox.Plugin;
-using System.Threading;
-using static Wox.Infrastructure.StringMatcher;
-using Wox.Infrastructure;
-using System.Collections.Specialized;
+using Paletteau.Plugin;
+using Paletteau.Infrastructure;
 
 namespace Palette
 {
