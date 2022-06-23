@@ -25,7 +25,7 @@ namespace Palette
             if (obj == null || GetType() != obj.GetType())
                 return false;
             var item = (ActionItem)obj;
-            return  item.type == type && item.action == action && item.description == description;
+            return item.type == type && item.action == action && item.description == description;
         }
 
         public static bool operator !=(ActionItem a, ActionItem b) => !(a == b);

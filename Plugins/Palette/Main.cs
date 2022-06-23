@@ -105,6 +105,14 @@ namespace Palette
             { "{DIVIDE}", "numpad/" },
         };
 
+        private static string TranslateAction(ActionItem actionItem)
+        {
+            string result = "";
+            if (actionItem.type == "key")
+                result = string.Join(" | ", Array.ConvertAll(ParseKeySequence(actionItem.action), TranslateKey));
+            return result;
+        }
+
         private static string TranslateKey(string key)
         {
             string translatedKey = "";
@@ -135,8 +143,13 @@ namespace Palette
             else if (!key.StartsWith("{"))
                 translatedKey += key.ToUpper();        // normal character
             else if (key.EndsWith("}"))                // just in case. Don't crash on exceptional cases
-                translatedKey = key.Substring(1, key.Length - 2);
+                translatedKey = key.Substring(1, key.Length - 2).ToUpper();
             return translatedKey;
+        }
+
+        private static string[] ParseKeySequence(string key)
+        {
+            return key.Split('|');
         }
 
         public List<Result> Query(Query query)
@@ -169,13 +182,13 @@ namespace Palette
                     results.Add(new Result
                     {
                         Title = actionItem.description,
-                        SubTitle = TranslateKey(actionItem.action),
+                        SubTitle = TranslateAction(actionItem),
                         // IcoPath = Path.Combine("Images", "app.png"),
                         Score = matchResult.Score + history.GetCount(process, actionItem) * 1000000,      // history always first
                         TitleHighlightData = matchResult.MatchData,
                         Action = _ =>
                         {
-                            Task.Run(() =>
+                            Task.Run(async () =>
                             {
                                 history.Hit(process, actionItem);
                                 // waiting for 3 seconds
@@ -184,11 +197,19 @@ namespace Palette
                                     // if current process matched the target, send keys
                                     if (GetActiveProcess().Id == process.Id)
                                     {
-                                        SendKeys.SendWait(actionItem.action);
-                                        SendKeys.Flush();
+                                        if (actionItem.type == "key")
+                                        {
+                                            foreach (string key in ParseKeySequence(actionItem.action))
+                                            {
+                                                // System.Console.WriteLine(GetActiveProcess().Id);
+                                                SendKeys.SendWait(key);
+                                                SendKeys.Flush();
+                                                await Task.Delay(50);
+                                            }
+                                        }
                                         return;
                                     }
-                                    Task.Delay(100);
+                                    await Task.Delay(100);
                                 };
                             });
                             return true;
