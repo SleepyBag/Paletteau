@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Release build, https://github.com/SleepyBag/Paletteau")]
 #endif
 
-[assembly: AssemblyCompany("Wox")]
-[assembly: AssemblyProduct("Wox")]
+[assembly: AssemblyCompany("Paletteau")]
+[assembly: AssemblyProduct("Paletteau")]
 [assembly: AssemblyCopyright("The MIT License (MIT)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

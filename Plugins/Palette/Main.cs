@@ -163,9 +163,20 @@ namespace Palette
         public List<Result> Query(Query query)
         {
             var process = query.BackgroundProcess;
-            if (process == null || !setting.commandTables.ContainsKey(process.ProcessName))
+            if (process == null)
             {
                 return new List<Result>();
+            }
+            // if no palettes for current process, show the process name
+            if (!setting.commandTables.ContainsKey(process.ProcessName))
+            {
+                return new List<Result>
+                {
+                    new Result
+                    {
+                        Title = "No palette available for " + process.ProcessName
+                    }
+                };
             }
             // cached information of current process
             if (process.ProcessName != curProcess?.ProcessName || IsSettingUpdated())

@@ -77,6 +77,16 @@ namespace Paletteau.ViewModel
 
         public Result Result { get; set; }
 
+        public string SubtitleVisibility
+        {
+            get
+            {
+                if (Result.SubTitle == null || Result.SubTitle == "")
+                    return "Collapsed";
+                return "Visible";
+            }
+        }
+
         public override bool Equals(object obj)
         {
             var r = obj as ResultViewModel;

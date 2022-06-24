@@ -53,7 +53,7 @@
                                 </MultiBinding>
                             </vm:ResultsViewModel.FormattedText>
                         </TextBlock>
-                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Background="White" HorizontalAlignment="Right">
+                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Background="White" HorizontalAlignment="Right" Visibility="{Binding SubtitleVisibility}">
                             <TextBlock Style="{DynamicResource ItemSubTitleStyle}" ToolTip="{Binding Result.SubTitle}"
                                        x:Name="SubTitle" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="3 0 3 0">
                                 <vm:ResultsViewModel.FormattedText>
