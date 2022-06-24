@@ -25,7 +25,7 @@ namespace Paletteau.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Paletteau-launcher/Paletteau")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/SleepyBag/Paletteau")]
         public string GithubRepo {
             get {
                 return ((string)(this["GithubRepo"]));

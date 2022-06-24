@@ -8,8 +8,8 @@ namespace Paletteau.Infrastructure
 {
     public static class Constant
     {
-        public const string Wox = "Paletteau";
-        public static readonly string WoxExecutable = $"{Wox}.exe";
+        public const string Paletteau = "Paletteau";
+        public static readonly string WoxExecutable = $"{Paletteau}.exe";
         public const string Plugins = "Plugins";
 
         private static Assembly Assembly = Assembly.GetExecutingAssembly();

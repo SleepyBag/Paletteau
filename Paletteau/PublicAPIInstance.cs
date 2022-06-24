@@ -6,13 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Squirrel;
-using Paletteau.Core;
 using Paletteau.Core.Plugin;
 using Paletteau.Core.Resource;
 using Paletteau.Helper;
-using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Hotkey;
-using Paletteau.Image;
 using Paletteau.Plugin;
 using Paletteau.ViewModel;
 

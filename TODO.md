@@ -1,9 +1,9 @@
+- show process name if no palette available
+- show at the location of background process
 - palettes for more programs
-- dont show up if no palette available
+- don't show up if no palette available
 - per program history
 - show recent commands on top
-- don't show at startup
-- better showing shortcuts
 - window management: pin/unpin, hide/show
 - edge bookmarks
 - daily tip

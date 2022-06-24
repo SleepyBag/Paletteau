@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Microsoft.Win32;
@@ -13,7 +9,6 @@ using NHotkey;
 using NHotkey.Wpf;
 using Ookii.Dialogs.Wpf; // may be removed later https://github.com/dotnet/wpf/issues/438
 
-using Paletteau.Core;
 using Paletteau.Core.Plugin;
 using Paletteau.Core.Resource;
 using Paletteau.Infrastructure.Hotkey;
@@ -56,7 +51,7 @@ namespace Paletteau
         {
             using (var key = Registry.CurrentUser.OpenSubKey(StartupPath, true))
             {
-                key?.SetValue(Infrastructure.Constant.Wox, Infrastructure.Constant.ExecutablePath);
+                key?.SetValue(Infrastructure.Constant.Paletteau, Infrastructure.Constant.ExecutablePath);
             }
         }
 
@@ -64,7 +59,7 @@ namespace Paletteau
         {
             using (var key = Registry.CurrentUser.OpenSubKey(StartupPath, true))
             {
-                key?.DeleteValue(Infrastructure.Constant.Wox, false);
+                key?.DeleteValue(Infrastructure.Constant.Paletteau, false);
             }
         }
 
@@ -72,7 +67,7 @@ namespace Paletteau
         {
             using (var key = Registry.CurrentUser.OpenSubKey(StartupPath, true))
             {
-                var path = key?.GetValue(Infrastructure.Constant.Wox) as string;
+                var path = key?.GetValue(Infrastructure.Constant.Paletteau) as string;
                 if (path != null)
                 {
                     return path == Infrastructure.Constant.ExecutablePath;

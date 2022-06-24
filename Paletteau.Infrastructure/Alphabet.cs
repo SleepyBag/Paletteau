@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.Caching;
 using NLog;
 using ToolGood.Words;
-using Paletteau.Infrastructure.Logger;
 using Paletteau.Infrastructure.UserSettings;
 
 namespace Paletteau.Infrastructure

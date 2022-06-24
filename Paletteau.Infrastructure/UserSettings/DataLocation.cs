@@ -12,7 +12,7 @@ namespace Paletteau.Infrastructure.UserSettings
         public const string PortableFolderName = "UserData";
         public const string DeletionIndicatorFile = ".dead";
         public static string PortableDataPath = Path.Combine(Constant.ProgramDirectory, PortableFolderName);
-        public static string RoamingDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Constant.Wox);
+        public static string RoamingDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Constant.Paletteau);
         public static string DataDirectory()
         {
             if (PortableDataLocationInUse())

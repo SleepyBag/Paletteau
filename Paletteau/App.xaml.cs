@@ -109,7 +109,7 @@ namespace Paletteau
                 PluginManager.InitializePlugins(API);
 
                 Current.MainWindow = window;
-                Current.MainWindow.Title = Constant.Wox;
+                Current.MainWindow.Title = Constant.Paletteau;
 
                 // todo temp fix for instance code logic
                 // load plugin before change language, because plugin language also needs be changed

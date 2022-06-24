@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paletteau", "Paletteau\Paletteau.csproj", "{DB90F671-D861-46BB-93A3-F1304F5BA1C5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{03FFA443-5F50-48D5-8869-F3DF316803AA} = {03FFA443-5F50-48D5-8869-F3DF316803AA}
+		{DA4B564D-47D0-44A9-B530-6C1995E76F9E} = {DA4B564D-47D0-44A9-B530-6C1995E76F9E}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paletteau.Test", "Paletteau.Test\Paletteau.Test.csproj", "{FF742965-9A80-41A5-B042-D6C7D3A21708}"

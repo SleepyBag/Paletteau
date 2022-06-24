@@ -22,7 +22,7 @@ namespace Paletteau.Core.Configuration
         /// <returns></returns>
         private UpdateManager NewUpdateManager()
         {
-            return new UpdateManager(string.Empty, Constant.Wox, Constant.RootDirectory);
+            return new UpdateManager(string.Empty, Constant.Paletteau, Constant.RootDirectory);
         }
 
         public void DisablePortableMode()
@@ -85,7 +85,7 @@ namespace Paletteau.Core.Configuration
         {
             using (var portabilityUpdater = NewUpdateManager())
             {
-                var exeName = Constant.Wox + ".exe";
+                var exeName = Constant.Paletteau + ".exe";
                 portabilityUpdater.RemoveShortcutsForExecutable(exeName, ShortcutLocation.StartMenu);
                 portabilityUpdater.RemoveShortcutsForExecutable(exeName, ShortcutLocation.Desktop);
                 portabilityUpdater.RemoveShortcutsForExecutable(exeName, ShortcutLocation.Startup);
@@ -115,7 +115,7 @@ namespace Paletteau.Core.Configuration
         {
             using (var portabilityUpdater = NewUpdateManager())
             {
-                var exeName = Constant.Wox + ".exe";
+                var exeName = Constant.Paletteau + ".exe";
                 portabilityUpdater.CreateShortcutsForExecutable(exeName, ShortcutLocation.StartMenu, false);
                 portabilityUpdater.CreateShortcutsForExecutable(exeName, ShortcutLocation.Desktop, false);
                 portabilityUpdater.CreateShortcutsForExecutable(exeName, ShortcutLocation.Startup, false);
@@ -131,7 +131,7 @@ namespace Paletteau.Core.Configuration
                     .CreateSubKey("Uninstall", RegistryKeyPermissionCheck.ReadWriteSubTree)) {; }
 
             var key = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default)
-                .CreateSubKey(uninstallRegSubKey + "\\" + Constant.Wox, RegistryKeyPermissionCheck.ReadWriteSubTree);
+                .CreateSubKey(uninstallRegSubKey + "\\" + Constant.Paletteau, RegistryKeyPermissionCheck.ReadWriteSubTree);
             key.SetValue("DisplayIcon", Constant.ApplicationDirectory + "\\app.ico", RegistryValueKind.String);
 
             using (var portabilityUpdater = NewUpdateManager())

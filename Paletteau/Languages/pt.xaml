@@ -97,7 +97,7 @@
     <system:String x:Key="checkUpdatesFailed">Não foi possível procurar atualizações. Verifique a sua ligação à Internet, as definições do proxy em api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Não foi possível descarregar as atualizações. Verifique a sua ligação à Internet, as definições do proxy em github-cloud.s3.amazonaws.com, 
-        ou aceda a https://github.com/Wox-launcher/Wox/releases para descarregar a atualização.
+        ou aceda a https://github.com/SleepyBag/Paletteau/releases para descarregar a atualização.
     </system:String>
     <system:String x:Key="releaseNotes">Notas da versão:</system:String>
 

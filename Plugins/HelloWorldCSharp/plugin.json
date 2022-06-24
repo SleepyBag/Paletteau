@@ -6,7 +6,7 @@
     "Author":"Wox",
     "Version":"1.0.0",
     "Language":"csharp",
-    "Website":"https://github.com/Wox-launcher/Wox",
+    "Website":"https://github.com/SleepyBag/Paletteau",
     "ExecuteFileName":"HelloWorldCSharp.dll",
     "IcoPath":"Images\\app.png",
     "Disabled": true

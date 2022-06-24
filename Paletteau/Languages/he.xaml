@@ -95,7 +95,7 @@
     <system:String x:Key="checkUpdatesFailed">חיפוש עדכונים נכשל, אנא בדוק את הגדרות החיבור והפרוקסי אל מול api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         הורדת העדכונים נכשלה, אנא בדוק את הגדרות החיבור והפרוקסי אל מול github-cloud.s3.amazonaws.com,
-        או גלוש ל https://github.com/Wox-launcher/Wox/releases על מנת להוריד את העדכונים באופן ידני.
+        או גלוש ל https://github.com/SleepyBag/Paletteau/releases על מנת להוריד את העדכונים באופן ידני.
     </system:String>
     <system:String x:Key="releaseNotes">הערות שחרור:</system:String>
 

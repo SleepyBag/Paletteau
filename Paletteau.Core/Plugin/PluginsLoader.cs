@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using NLog;
 using Paletteau.Infrastructure;
-using Paletteau.Infrastructure.Exception;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Infrastructure.UserSettings;
 using Paletteau.Plugin;

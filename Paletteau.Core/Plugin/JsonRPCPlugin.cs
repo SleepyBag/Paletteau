@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using NLog;
-using Paletteau.Infrastructure.Exception;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Plugin;
 

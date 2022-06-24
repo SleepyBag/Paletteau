@@ -127,7 +127,7 @@ namespace Paletteau
         {
             _notifyIcon = new NotifyIcon
             {
-                Text = Infrastructure.Constant.Wox,
+                Text = Infrastructure.Constant.Paletteau,
                 Icon = Properties.Resources.app,
                 Visible = !_settings.HideNotifyIcon
             };

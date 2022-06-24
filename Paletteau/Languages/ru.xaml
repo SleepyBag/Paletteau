@@ -96,7 +96,7 @@
     <system:String x:Key="checkUpdatesFailed">Check updates failed, please check your connection and proxy settings to api.github.com.</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         Ошибка при загрузке обновления, пожалуйста проверьте свои настройки соединия и прокси к github-cloud.s3.amazonaws.com, 
-        или скачайте обновление вручную с https://github.com/Wox-launcher/Wox/releases.
+        или скачайте обновление вручную с https://github.com/SleepyBag/Paletteau/releases.
     </system:String>
     <system:String x:Key="releaseNotes">В этой версии:</system:String>
 

@@ -101,7 +101,7 @@
     <system:String x:Key="checkUpdatesFailed">检查更新失败，请检查到api.github.com的连接情况，以及代理设置。</system:String>
     <system:String x:Key="downloadUpdatesFailed">
         下载更新失败，请检查到github-cloud.s3.amazonaws.com的连接情况，以及代理设置。
-        你也可以前往 https://github.com/Wox-launcher/Wox/releases 下载并手动更新。
+        你也可以前往 https://github.com/SleepyBag/Paletteau/releases 下载并手动更新。
     </system:String>
     <system:String x:Key="releaseNotes">更新说明:</system:String>
 
