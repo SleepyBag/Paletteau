@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Paletteau.Installer" Language="1033" Version="1.0.0.0" Manufacturer="Qianming Xue" UpgradeCode="82da6e61-64ab-4c23-8a1e-ed971f8ad146">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Paletteau.Installer" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Paletteau.Installer" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="Paletteau">
+				<File Source="$(var.Paletteau.TargetPath)" />
+			</Component>
+			<Component Id="Paletteau.Core">
+				<File Source="$(var.Paletteau.Core.TargetPath)" />
+			</Component>
+			<Component Id="Paletteau.Infrastructure">
+				<File Source="$(var.Paletteau.Infrastructure.TargetPath)" />
+			</Component>
+			<Component Id="Paletteau.Plugin">
+				<File Source="$(var.Paletteau.Plugin.TargetPath)" />
+			</Component>
+			<Component Id="Palette">
+				<File Source="$(var.Palette.TargetPath)" />
+			</Component>
+			<Component Id="HelloWorldCSharp">
+				<File Source="$(var.HelloWorldCSharp.TargetPath)" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
