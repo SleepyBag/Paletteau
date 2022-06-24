@@ -31,14 +31,17 @@ Usage
 -----
 
 - Just run the `Paletteau.exe` file in the archive.
-- Launch: <kbd>Alt</kbd>+<kbd>Space</kbd>
+- Launch: <kbd>Alt</kbd>+<kbd>q</kbd>
 - Cancel/Return: <kbd>Esc</kbd>
 
-Contribution
+Call for Contribution
 ------------
 
-- Star!
+- Star me please!
 - Any PR / issue is welcomed!
+- Meaningful work items for PRs:
+  - Palettes for more programs!
+  - Installer project.
 
 Build
 -----
