@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms.VisualStyles;
 
 namespace Palette
 {
@@ -38,28 +40,43 @@ namespace Palette
         }
     }
 
-    internal class Setting
+    public class Setting
     {
         [JsonProperty("palettes")]
         public Dictionary<string, CommandTable> commandTables = new Dictionary<string, CommandTable>();
 
+        public string filename;
+        public DateTime lastLoadTime;
+        public Exception lastException;
+
+        private Setting(string _filename)
+        {
+            filename = _filename;
+        }
+
         public static Setting ReadSetting(string filename)
         {
-            Setting setting;
+            Setting setting = new Setting(filename);
+            setting.ReloadSetting();
+            return setting;
+        }
+
+        public void ReloadSetting()
+        {
             try
             {
                 using (StreamReader r = new StreamReader(filename))
                 {
                     string s = r.ReadToEnd();
-                    setting = JsonConvert.DeserializeObject<Setting>(s);
+                    JsonConvert.PopulateObject(s, this);
                 }
+                lastException = null;
             }
-            catch
+            catch (Exception ex)
             {
-                setting = new Setting();
+                lastException = ex;
             }
-            return setting;
+            lastLoadTime = DateTime.Now;
         }
-
     }
 }

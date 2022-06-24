@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Windows.Controls;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
@@ -8,10 +9,11 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Paletteau.Plugin;
 using Paletteau.Infrastructure;
+using Paletteau.Infrastructure.UserSettings;
 
 namespace Palette
 {
-    class Main : IPlugin
+    class Main : IPlugin, ISettingProvider
     {
         #region user32.dll import
         [DllImport("user32.dll")]
@@ -28,6 +30,7 @@ namespace Palette
         static extern bool SetForegroundWindow(IntPtr hWnd);
         #endregion
 
+        DateTime lastQueryTime;
         Setting setting;
         History history;
         Process curProcess;                                         // for increamntal filtering
@@ -152,6 +155,11 @@ namespace Palette
             return key.Split('|');
         }
 
+        private bool IsSettingUpdated()
+        {
+            return setting.lastLoadTime > lastQueryTime;
+        }
+
         public List<Result> Query(Query query)
         {
             var process = query.BackgroundProcess;
@@ -160,12 +168,14 @@ namespace Palette
                 return new List<Result>();
             }
             // cached information of current process
-            if (process.ProcessName != curProcess?.ProcessName)
+            if (process.ProcessName != curProcess?.ProcessName || IsSettingUpdated())
             {
                 curProcess = process;
                 commandTable = setting.commandTables[process.ProcessName];
                 matchingCache = new Dictionary<string, List<int>>();
             }
+
+            lastQueryTime = DateTime.Now;
             
             var matchingRange = GetMatchingRange(query.Search);
             var matchedIndices = new List<Int32>();
@@ -230,6 +240,11 @@ namespace Palette
             history = History.ReadHistory(
                 Path.Combine(context.CurrentPluginMetadata.PluginDirectory, "history.json")
             );
+        }
+
+        public System.Windows.Controls.Control CreateSettingPanel()
+        {
+            return new SettingWindow(setting);
         }
     }
 }

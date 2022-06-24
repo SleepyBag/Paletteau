@@ -25,7 +25,6 @@ using Paletteau.Plugin;
 using Paletteau.Storage;
 using System.Drawing;
 using System.Windows.Media;
-using System.IO;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
