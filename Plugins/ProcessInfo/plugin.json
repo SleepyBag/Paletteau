@@ -1,0 +1,13 @@
+{
+  "ID":"31F6E5F7E5E84F9C88E8D609FCBD4B0A",
+  "ActionKeyword":"info",
+  "Name":"ProcessInfo",
+  "Description":"Show the information of current process",
+  "Author":"Qianming Xue",
+  "Version":"1.0.0",
+  "Language":"csharp",
+  "Website":"",
+  "ExecuteFileName":"ProcessInfo.dll",
+  "IcoPath":"",
+  "Disabled": false
+}
