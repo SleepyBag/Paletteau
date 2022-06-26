@@ -66,9 +66,9 @@
                 <CheckBox IsChecked="{Binding Settings.IgnoreHotkeysOnFullscreen}">
                     <TextBlock Text="{DynamicResource ignoreHotkeysOnFullscreen}" />
                 </CheckBox>
-                <CheckBox IsChecked="{Binding Settings.AutoUpdates}">
+                <!--<CheckBox IsChecked="{Binding Settings.AutoUpdates}">
                     <TextBlock Text="{DynamicResource autoUpdates}" />
-                </CheckBox>
+                </CheckBox>-->
                 <CheckBox IsChecked="{Binding Settings.UpdateToPrereleases}">
                     <TextBlock Text="{DynamicResource updateToPrereleases}" />
                 </CheckBox>

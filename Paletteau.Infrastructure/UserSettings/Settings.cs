@@ -79,7 +79,7 @@ namespace Paletteau.Infrastructure.UserSettings
             }
         }
 
-        public bool AutoUpdates { get; set; } = true;
+        public bool AutoUpdates { get; set; } = false;
         public bool UpdateToPrereleases { get; set; } = false;
 
         public double WindowLeft { get; set; }
