@@ -1,8 +1,20 @@
 Paletteau
 ===
 
-**Paletteau** aims to provide interactive command palette for Windows programs, which do not come with such functionality.
 **Paletteau** is a fork of [Wox](https://github.com/Wox-launcher/Wox).
+
+Recent productive applications often come with a command palette, by which you can fuzzily search through all available commands.
+For example, pressing `ctrl+shift+p` in vscode calls a fancy [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+Windows Terminal also provides a great [command palette](https://docs.microsoft.com/en-us/windows/terminal/command-palette).
+
+Though most applications today doesn't provide such modern thing - or provided but doesn't work well (`ctrl-q` of visual studio, for example).
+
+**Paletteau** aims to provide interactive command palette for these programs.
+Basically, it comes with a command table for each supported application.
+Each command is mapping to a keyboard shortcut of the application.
+When you select a command a command in Paletteau, it sends a key sequence to the application, just like you pressed the shortcut.
+This way, Paletteau provides basic frequent functionality of supported applications without an intrusive agent in the application side.
+It also causes **limitations**, too - we cannot trigger functionalities without a binding keyboard shortcut using Paletteau.
 
 ![demo](https://i.imgur.com/DfuhETR.gif)
 
@@ -13,7 +25,7 @@ Features
 - Use *pinyin* to search for programs / 支持用 **拼音** 搜索程序
   - wyy / wangyiyun → 网易云音乐
 - Customizable themes
-- Develop plugins yourself
+- Develop Paletteau plugins yourself
 - Highlighting of how results are matched during query search
 
 
@@ -76,6 +88,7 @@ Call for Contribution
 - Any PR / issue is welcomed!
 - Meaningful work items for PRs:
   - Palettes for more programs!
+  - Theme adaption. Only dark theme is tuned for Paletteau for now.
   - Installer project.
 
 Build
