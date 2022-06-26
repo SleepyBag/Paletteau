@@ -65,6 +65,7 @@ The format of configuration looks like the following:
 To add palette for a new program, just add a new item in `palettes` section, with key being the **process name** and value the list of **actions**.
 An **action** is a dictionary of three keys: `action`, `description` and `type`, where
 - `action` is the binding keyboard shortcut, according to the [`SendKeys` format](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send?view=windowsdesktop-6.0).
+	- To send a sequence of keys, use `|` as the separator. For example, `^p|%a|+j` means sending `ctrl-p`, then `alt-a`, then `shift-j`.
 - `description` is the description of the shortcut. Paletteau filters actions by descriptions.
 - `type` is reserved for furtuer use. It could only be `"key"` for now.
 
