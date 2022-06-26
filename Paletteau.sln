@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palette", "Plugins\Palette\
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Paletteau.Installer", "Paletteau.Installer\Paletteau.Installer.wixproj", "{088A958B-7254-404E-9161-80860CE57CF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessInfo", "Plugins\ProcessInfo\ProcessInfo.csproj", "{2B7F9279-66AC-43B5-8594-58523AC641A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,14 @@ Global
 		{088A958B-7254-404E-9161-80860CE57CF1}.Release|Any CPU.Build.0 = Release|x86
 		{088A958B-7254-404E-9161-80860CE57CF1}.Release|x86.ActiveCfg = Release|x86
 		{088A958B-7254-404E-9161-80860CE57CF1}.Release|x86.Build.0 = Release|x86
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B7F9279-66AC-43B5-8594-58523AC641A5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +130,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03FFA443-5F50-48D5-8869-F3DF316803AA} = {3A73F5A7-0335-40D8-BF7C-F20BE5D0BA87}
 		{DA4B564D-47D0-44A9-B530-6C1995E76F9E} = {3A73F5A7-0335-40D8-BF7C-F20BE5D0BA87}
+		{2B7F9279-66AC-43B5-8594-58523AC641A5} = {3A73F5A7-0335-40D8-BF7C-F20BE5D0BA87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F26ACB50-3F6C-4907-B0C9-1ADACC1D0DED}
