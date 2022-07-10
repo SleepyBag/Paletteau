@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace Paletteau.Plugin.BrowserBookmark
 {
-    public class ChromeBookmarks
+    public class EdgeBookmarks
     {
         private List<Bookmark> bookmarks = new List<Bookmark>();
 
         public List<Bookmark> GetBookmarks()
         {
-            LoadChromeBookmarks();
+            LoadEdgeBookmarks();
             return bookmarks;
         }
 
@@ -35,8 +35,20 @@ namespace Paletteau.Plugin.BrowserBookmark
             return nested;
         }
 
+        private static string getBookmarkName(JObject obj)
+        {
+            JContainer cur = obj;
+            string name = (string)cur["name"];
+            while (cur != null)
+            {
+                if (cur is JObject)
+                    name = (string)cur["name"] + "/" + name;
+                cur = cur.Parent;
+            }
+            return name;
+        }
 
-        private void ParseChromeBookmarks(String path, string source)
+        private void ParseEdgeBookmarks(String path, string source)
         {
             if (!File.Exists(path)) return;
             string all = File.ReadAllText(path);
@@ -45,7 +57,7 @@ namespace Paletteau.Plugin.BrowserBookmark
             var flatterned = GetNestedChildren(items);
             var bs = from item in flatterned select new Bookmark()
                      {
-                         Name = (string)item["name"],
+                         Name = getBookmarkName(item),
                          Url = (string)item["url"],
                          Source = source
                      };
@@ -58,7 +70,7 @@ namespace Paletteau.Plugin.BrowserBookmark
             bookmarks.AddRange(filtered);
         }
 
-        private void LoadChromeBookmarks(string path, string name)
+        private void LoadEdgeBookmarks(string path, string name)
         {
             if (!Directory.Exists(path)) return;
             var paths = Directory.GetDirectories(path);
@@ -67,17 +79,16 @@ namespace Paletteau.Plugin.BrowserBookmark
             {
                 
                 if (File.Exists(Path.Combine(profile, "Bookmarks")))
-                    ParseChromeBookmarks(Path.Combine(profile, "Bookmarks"), name + (Path.GetFileName(profile) == "Default" ? "" : (" (" + Path.GetFileName(profile) + ")")));
+                    ParseEdgeBookmarks(Path.Combine(profile, "Bookmarks"), name + (Path.GetFileName(profile) == "Default" ? "" : (" (" + Path.GetFileName(profile) + ")")));
             }
         }
 
-        private void LoadChromeBookmarks()
+        private void LoadEdgeBookmarks()
         {
             String platformPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            LoadChromeBookmarks(Path.Combine(platformPath, @"Google\Chrome\User Data"), "Google Chrome");
-            LoadChromeBookmarks(Path.Combine(platformPath, @"Google\Chrome SxS\User Data"), "Google Chrome Canary");
-            LoadChromeBookmarks(Path.Combine(platformPath, @"Chromium\User Data"), "Chromium");
+            LoadEdgeBookmarks(Path.Combine(platformPath, @"Microsoft\Edge\User Data"), "Google Chrome");
         }
 
     }
 }
+

@@ -6,9 +6,9 @@ using System.Linq;
 using Microsoft.Data.Sqlite;
 using NLog;
 
-using Wox.Infrastructure.Logger;
+using Paletteau.Infrastructure.Logger;
 
-namespace Wox.Plugin.BrowserBookmark
+namespace Paletteau.Plugin.BrowserBookmark
 {
     public class FirefoxBookmarks
     {

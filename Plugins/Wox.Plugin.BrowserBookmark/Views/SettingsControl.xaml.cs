@@ -1,9 +1,9 @@
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
-using Wox.Plugin.BrowserBookmark.Models;
+using Paletteau.Plugin.BrowserBookmark.Models;
 
-namespace Wox.Plugin.BrowserBookmark.Views
+namespace Paletteau.Plugin.BrowserBookmark.Views
 {
     /// <summary>
     /// Interaction logic for BrowserBookmark.xaml
@@ -16,7 +16,7 @@ namespace Wox.Plugin.BrowserBookmark.Views
         {
             InitializeComponent();
             _settings = settings;
-            browserPathBox.Text = _settings.BrowserPath;
+            // browserPathBox.Text = _settings.BrowserPath;
             NewWindowBrowser.IsChecked = _settings.OpenInNewBrowserWindow;
             NewTabInBrowser.IsChecked = !_settings.OpenInNewBrowserWindow;
         }        
@@ -39,7 +39,7 @@ namespace Wox.Plugin.BrowserBookmark.Views
             fileBrowserDialog.CheckPathExists = true;
             if (fileBrowserDialog.ShowDialog() == true)
             {
-                browserPathBox.Text = fileBrowserDialog.FileName;
+                // browserPathBox.Text = fileBrowserDialog.FileName;
                 _settings.BrowserPath = fileBrowserDialog.FileName;
             }
         }

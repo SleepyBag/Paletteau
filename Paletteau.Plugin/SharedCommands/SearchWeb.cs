@@ -11,20 +11,24 @@ namespace Paletteau.Infrastructure
         /// Opens search in a new browser. If no browser path is passed in then Chrome is used. 
         /// Leave browser path blank to use Chrome.
         /// </summary>
-		public static void NewBrowserWindow(this string url, string browserPath)
+		public static void NewBrowserWindow(this string url, string exePath, string browserName)
         {
-            var browserExecutableName = browserPath?
-                                        .Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.None)
-                                        .Last();
-
-            var browser = string.IsNullOrEmpty(browserExecutableName) ? "chrome" : browserPath;
-
-            // Internet Explorer will open url in new browser window, and does not take the --new-window parameter
-            var browserArguements = browserExecutableName == "iexplore.exe" ? url : "--new-window " + url;
+            string exeArgs = url;
+            switch (browserName)
+            {
+                case "msedge":
+                case "chrome":
+                case "chromium":
+                    exeArgs = "--new-window " + url;
+                    break;
+                case "firefox":
+                    exeArgs = "-new-window " + url;
+                    break;
+            }
 
             try
             {
-                Process.Start(browser, browserArguements);
+                Process.Start(exePath, exeArgs);
             }
             catch (System.ComponentModel.Win32Exception)
             {
@@ -35,13 +39,13 @@ namespace Paletteau.Infrastructure
         /// <summary> 
         /// Opens search as a tab in the default browser chosen in Windows settings.
         /// </summary>
-        public static void NewTabInBrowser(this string url, string browserPath)
+        public static void NewTabInBrowser(this string url, string exePath, string browserName)
         {
             try
             {
-                if (!string.IsNullOrEmpty(browserPath))
+                if (!string.IsNullOrEmpty(exePath))
                 {
-                    Process.Start(browserPath, url);
+                    Process.Start(exePath, url);
                 }
                 else
                 {

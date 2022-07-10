@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
-using Wox.Infrastructure.Storage;
-using Wox.Plugin.BrowserBookmark.Commands;
-using Wox.Plugin.BrowserBookmark.Models;
-using Wox.Plugin.BrowserBookmark.Views;
-using Wox.Infrastructure;
+using Paletteau.Infrastructure.Storage;
+using Paletteau.Plugin.BrowserBookmark.Commands;
+using Paletteau.Plugin.BrowserBookmark.Models;
+using Paletteau.Plugin.BrowserBookmark.Views;
+using Paletteau.Infrastructure;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
-namespace Wox.Plugin.BrowserBookmark
+namespace Paletteau.Plugin.BrowserBookmark
 {
     public class Main : ISettingProvider, IPlugin, IReloadable, IPluginI18n, ISavable
     {
         private PluginInitContext context;
 
-        private List<Bookmark> cachedBookmarks = new List<Bookmark>();
+        private Dictionary<string, List<Bookmark>> cachedBookmarks = new Dictionary<string, List<Bookmark>>();
         private object _updateLock = new object();
 
         private readonly Settings _settings;
@@ -26,21 +27,22 @@ namespace Wox.Plugin.BrowserBookmark
             _storage = new PluginJsonStorage<Settings>();
             _settings = _storage.Load();
 
-            //TODO: Let the user select which browser's bookmarks are displayed
             var chromeBookmarks = new ChromeBookmarks().GetBookmarks().Distinct().ToList();
+            var edgeBookmarks = new EdgeBookmarks().GetBookmarks().Distinct().ToList();
             lock (_updateLock)
             {
-                cachedBookmarks = chromeBookmarks;
+                cachedBookmarks["chrome"] = chromeBookmarks;
+                cachedBookmarks["chromium"] = chromeBookmarks;
+                cachedBookmarks["msedge"] = edgeBookmarks;
             }
             Task.Run(() =>
             {
                 // firefox bookmarks is slow, since it nened open sqlite connection.
                 // use lazy load
-                var mozBookmarks = new FirefoxBookmarks().GetBookmarks();
-                var cached = mozBookmarks.Concat(cachedBookmarks).Distinct().ToList();
+                var mozBookmarks = new FirefoxBookmarks().GetBookmarks().Distinct().ToList();
                 lock (_updateLock)
                 {
-                    cachedBookmarks = cached;
+                    cachedBookmarks["firefox"] = mozBookmarks;
                 }
             });
 
@@ -51,8 +53,26 @@ namespace Wox.Plugin.BrowserBookmark
             this.context = context;
         }
 
+        public static string getBaseUrl(string url)
+        {
+            if (url.Contains("://"))
+            {
+                url = url.Substring(url.IndexOf("://") + 3);
+            }
+            if (url.Contains('/'))
+            {
+                url = url.Substring(0, url.IndexOf('/'));
+            }
+            return url;
+        }
+
         public List<Result> Query(Query query)
         {
+            Process backgroundProcess = query.BackgroundProcess;
+            if (!cachedBookmarks.TryGetValue(backgroundProcess.ProcessName, out var currentBookmarks))
+            {
+                return new List<Result>();
+            }
             string param = query.Search.TrimStart();
 
             // Should top results be returned? (true if no search parameters have been passed)
@@ -61,31 +81,31 @@ namespace Wox.Plugin.BrowserBookmark
             lock (_updateLock)
             {
 
-                var returnList = cachedBookmarks;
+                var returnList = currentBookmarks;
 
                 if (!topResults)
                 {
                     // Since we mixed chrome and firefox bookmarks, we should order them again                
-                    returnList = cachedBookmarks.Where(o => Bookmarks.MatchProgram(o, param)).ToList();
+                    returnList = currentBookmarks.Where(o => Bookmarks.MatchProgram(o, param)).ToList();
                     returnList = returnList.OrderByDescending(o => o.Score).ToList();
                 }
 
                 var results = returnList.Select(c => new Result()
                 {
                     Title = c.Name,
-                    SubTitle = c.Url,
+                    SubTitle = getBaseUrl(c.Url),
                     PluginDirectory = context.CurrentPluginMetadata.PluginDirectory,
                     IcoPath = @"Images\bookmark.png",
-                    Score = 5,
+                    Score = c.Score,
                     Action = (e) =>
                     {
                         if (_settings.OpenInNewBrowserWindow)
                         {
-                            c.Url.NewBrowserWindow(_settings.BrowserPath);
+                            c.Url.NewBrowserWindow(backgroundProcess.MainModule.FileName, backgroundProcess.ProcessName);
                         }
                         else
                         {
-                            c.Url.NewTabInBrowser(_settings.BrowserPath);
+                            c.Url.NewTabInBrowser(backgroundProcess.MainModule.FileName, backgroundProcess.ProcessName);
                         }
 
                         return true;
@@ -93,21 +113,20 @@ namespace Wox.Plugin.BrowserBookmark
                 }).ToList();
                 return results;
             }
-
         }
 
         public void ReloadData()
         {
             //TODO: Let the user select which browser's bookmarks are displayed
-            var chromeBookmarks = new ChromeBookmarks();
-            var mozBookmarks = new FirefoxBookmarks();
-            var b1 = mozBookmarks.GetBookmarks();
-            var b2 = chromeBookmarks.GetBookmarks();
-            b1.AddRange(b2);
-            var cached = b1.Distinct().ToList();
+            var chromeBookmarks = new ChromeBookmarks().GetBookmarks().Distinct().ToList();
+            var mozBookmarks = new FirefoxBookmarks().GetBookmarks().Distinct().ToList();
+            var edgeBookmarks = new EdgeBookmarks().GetBookmarks().Distinct().ToList();
             lock (_updateLock)
             {
-                cachedBookmarks = cached;
+                cachedBookmarks["chrome"] = chromeBookmarks;
+                cachedBookmarks["chromium"] = chromeBookmarks;
+                cachedBookmarks["firefox"] = mozBookmarks;
+                cachedBookmarks["msedge"] = edgeBookmarks;
             }
         }
 

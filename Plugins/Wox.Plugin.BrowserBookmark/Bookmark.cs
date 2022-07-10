@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Wox.Plugin.BrowserBookmark
+namespace Paletteau.Plugin.BrowserBookmark
 {
     public class Bookmark : IEquatable<Bookmark>, IEqualityComparer<Bookmark>
     {
