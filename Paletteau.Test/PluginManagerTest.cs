@@ -29,7 +29,7 @@ namespace Paletteau.Test
 
             StringMatcher stringMatcher = new StringMatcher();
             StringMatcher.Instance = stringMatcher;
-            stringMatcher.UserSettingSearchPrecision = Settings.Instance.QuerySearchPrecision;
+            // stringMatcher.UserSettingSearchPrecision = Settings.Instance.QuerySearchPrecision;
 
             PluginManager.LoadPlugins(Settings.Instance.PluginSettings);
             MainViewModel mainVm = new MainViewModel(false);

@@ -154,7 +154,7 @@ namespace Paletteau.Test
             bool expectedPrecisionResult)
         {
             // When            
-            var matcher = new StringMatcher { UserSettingSearchPrecision = expectedPrecisionScore };
+            var matcher = new StringMatcher {};
 
             // Given
             var matchResult = matcher.FuzzyMatch(queryString, compareString);
@@ -198,7 +198,7 @@ namespace Paletteau.Test
             bool expectedPrecisionResult)
         {
             // When
-            var matcher = new StringMatcher { UserSettingSearchPrecision = expectedPrecisionScore };
+            var matcher = new StringMatcher {};
 
             // Given
             var matchResult = matcher.FuzzyMatch(queryString, compareString);
@@ -225,7 +225,7 @@ namespace Paletteau.Test
         public void WhenGivenChinese(string queryString, string stringToCompare)
         {
             Settings.Instance.ShouldUsePinyin = true;
-            var matcher = new StringMatcher { UserSettingSearchPrecision = StringMatcher.SearchPrecisionScore.Regular };
+            var matcher = new StringMatcher {};
 
             var matchResult = matcher.FuzzyMatch(queryString, stringToCompare);
 

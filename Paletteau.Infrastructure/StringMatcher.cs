@@ -15,7 +15,7 @@ namespace Paletteau.Infrastructure
     public class StringMatcher
     {
 
-        public SearchPrecisionScore UserSettingSearchPrecision { get; set; }
+        // public SearchPrecisionScore UserSettingSearchPrecision { get; set; }
 
         private readonly Alphabet _alphabet;
         private MemoryCache _cache;
@@ -44,7 +44,7 @@ namespace Paletteau.Infrastructure
         public MatchResult FuzzyMatch(string query, string stringToCompare)
         {
             query = query.Trim();
-            if (string.IsNullOrEmpty(stringToCompare) || string.IsNullOrEmpty(query)) return new MatchResult(false, UserSettingSearchPrecision);
+            if (string.IsNullOrEmpty(stringToCompare) || string.IsNullOrEmpty(query)) return new MatchResult(false);
             var queryWithoutCase = query.ToLower();
             string translated = _alphabet.Translate(stringToCompare);
 
@@ -157,10 +157,10 @@ namespace Paletteau.Infrastructure
                         index = previousIndexMatrix[index.Item1, index.Item2, index.Item3];
                     }
                     matchList.Reverse();
-                    match = new MatchResult(isMatch, UserSettingSearchPrecision, matchList, maxScore);
+                    match = new MatchResult(isMatch, matchList, maxScore);
                 }
                 else
-                    match = new MatchResult(isMatch, UserSettingSearchPrecision);
+                    match = new MatchResult(isMatch);
 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.SlidingExpiration = new TimeSpan(12, 0, 0);
@@ -180,16 +180,16 @@ namespace Paletteau.Infrastructure
 
     public class MatchResult
     {
-        public MatchResult(bool success, SearchPrecisionScore searchPrecision)
+        public MatchResult(bool success)
         {
             Success = success;
-            SearchPrecision = searchPrecision;
+            // SearchPrecision = searchPrecision;
         }
 
-        public MatchResult(bool success, SearchPrecisionScore searchPrecision, List<int> matchData, int rawScore)
+        public MatchResult(bool success, List<int> matchData, int rawScore)
         {
             Success = success;
-            SearchPrecision = searchPrecision;
+            // SearchPrecision = searchPrecision;
             MatchData = matchData;
             RawScore = rawScore;
         }

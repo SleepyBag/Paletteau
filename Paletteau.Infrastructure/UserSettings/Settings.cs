@@ -65,14 +65,14 @@ namespace Paletteau.Infrastructure.UserSettings
                                             .Parse(typeof(StringMatcher.SearchPrecisionScore), value);
 
                     QuerySearchPrecision = precisionScore;
-                    StringMatcher.Instance.UserSettingSearchPrecision = precisionScore;
+                    // StringMatcher.Instance.UserSettingSearchPrecision = precisionScore;
                 }
                 catch (ArgumentException e)
                 {
                     Logger.WoxError("Failed to load QuerySearchPrecisionString value from Settings file", e);
 
                     QuerySearchPrecision = StringMatcher.SearchPrecisionScore.Regular;
-                    StringMatcher.Instance.UserSettingSearchPrecision = StringMatcher.SearchPrecisionScore.Regular;
+                    // StringMatcher.Instance.UserSettingSearchPrecision = StringMatcher.SearchPrecisionScore.Regular;
 
                     throw;
                 }

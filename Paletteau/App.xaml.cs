@@ -100,7 +100,7 @@ namespace Paletteau
 
                 _stringMatcher = new StringMatcher();
                 StringMatcher.Instance = _stringMatcher;
-                _stringMatcher.UserSettingSearchPrecision = Settings.Instance.QuerySearchPrecision;
+                //_stringMatcher.UserSettingSearchPrecision = Settings.Instance.QuerySearchPrecision;
 
                 PluginManager.LoadPlugins(Settings.Instance.PluginSettings);
                 _mainVM = new MainViewModel();

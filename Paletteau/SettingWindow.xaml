@@ -75,12 +75,12 @@
                 <CheckBox IsChecked="{Binding ShouldUsePinyin}">
                     <TextBlock Text="{DynamicResource ShouldUsePinyin}" />
                 </CheckBox>
-                <StackPanel Margin="10" Orientation="Horizontal">
+                <!--<StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource querySearchPrecision}" />
                     <ComboBox Margin="10 0 0 0"
                               ItemsSource="{Binding QuerySearchPrecisionStrings}" 
                               SelectedItem="{Binding Settings.QuerySearchPrecisionString}" />
-                </StackPanel>
+                </StackPanel>-->
                 <StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource language}" />
                     <ComboBox Margin="10 0 0 0" Width="120"
