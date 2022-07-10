@@ -1,10 +1,7 @@
-- show process name if no palette available
-- show at the location of background process
+- support of separator
 - palettes for more programs
 - don't show up if no palette available
-- per program history
-- show recent commands on top
-- window management: pin/unpin, hide/show
+- window management: pin/unpin, hide/show, kill
 - edge bookmarks
 - daily tip
 - semantic matching
