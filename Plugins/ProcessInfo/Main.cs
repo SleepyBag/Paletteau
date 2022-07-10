@@ -27,6 +27,11 @@ namespace Palette
                     Title = process.MainWindowTitle,
                     SubTitle = "window title"
                 },
+                new Result
+                {
+                    Title = process.MainModule.FileName,
+                    SubTitle = "executable path"
+                },
                 new Result {
                     Title = process.Id.ToString(),
                     SubTitle = "process id"
