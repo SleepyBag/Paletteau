@@ -170,13 +170,7 @@ namespace Palette
             // if no palettes for current process, show the process name
             if (!setting.commandTables.ContainsKey(process.ProcessName))
             {
-                return new List<Result>
-                {
-                    new Result
-                    {
-                        Title = "No palette available for " + process.ProcessName
-                    }
-                };
+                return new List<Result>();
             }
             // cached information of current process
             if (process.ProcessName != curProcess?.ProcessName || IsSettingUpdated())
