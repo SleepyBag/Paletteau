@@ -30,7 +30,12 @@ namespace Palette
                 new Result
                 {
                     Title = process.MainModule.FileName,
-                    SubTitle = "executable path"
+                    SubTitle = "executable path",
+                    Action = _ =>
+                    {
+                        Process.Start(Path.GetDirectoryName(process.MainModule.FileName));
+                        return true;
+                    }
                 },
                 new Result {
                     Title = process.Id.ToString(),
