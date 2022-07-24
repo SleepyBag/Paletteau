@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Palette.Providers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,52 +8,17 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Palette
 {
-    using CommandTable = List<ActionItem>;               // command table type for a specific program
-
-    public class ActionItem                              // type for a specific action for a program
+    internal class Setting
     {
-        [JsonProperty("description")]
-        public string description { get; set; }
-        [JsonProperty("type")]
-        public string type { get; set; }
-        [JsonProperty("action")]
-        public string action { get; set; }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-            var item = (ActionItem)obj;
-            return item.type == type && item.action == action && item.description == description;
-        }
-
-        public static bool operator !=(ActionItem a, ActionItem b) => !(a == b);
-        public static bool operator ==(ActionItem a, ActionItem b)
-        {
-            if (ReferenceEquals(a, b)) return true;
-            if (ReferenceEquals(a, null)) return false;
-            if (ReferenceEquals(b, null)) return false;
-            return a.Equals(b);
-        }
-    }
-
-    public class Setting
-    {
-        [JsonProperty("palettes")]
-        public Dictionary<string, CommandTable> commandTables = new Dictionary<string, CommandTable>();
-
-        public string filename;
-        public DateTime lastLoadTime;
-        public Exception lastException;
+        public Exception lastException { get; private set; }
+        public string filename { get; private set; }
+        public DateTime lastLoadTime { get; private set; }
+        public CommandTable commandTable { get; private set;  }
 
         private Setting(string _filename)
         {
             filename = _filename;
+            commandTable = new CommandTable();
         }
 
         public static Setting ReadSetting(string filename)
@@ -63,12 +30,28 @@ namespace Palette
 
         public void ReloadSetting()
         {
+            commandTable = new CommandTable();
             try
             {
                 using (StreamReader r = new StreamReader(filename))
                 {
                     string s = r.ReadToEnd();
-                    JsonConvert.PopulateObject(s, this);
+                    var globalSetting = JObject.Parse(s);
+                    var providerSettings = globalSetting["providers"].ToObject<Dictionary<string, JObject>>();
+                    // make provider objects according to type name
+                    foreach (var entry in providerSettings)
+                    {
+                        string providerName = entry.Key;
+                        JObject providerSetting = entry.Value;
+                        Type providerType = Type.GetType("Palette.Providers." + providerName);
+                        var provider = Activator.CreateInstance(providerType) as IPaletteProvider;
+                        var providerContext = new ProviderContext
+                        {
+                            setting = providerSetting,
+                            commandTable = commandTable
+                        };
+                        provider.Init(providerContext);
+                    }
                 }
                 lastException = null;
             }

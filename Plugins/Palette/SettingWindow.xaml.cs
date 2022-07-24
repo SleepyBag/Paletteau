@@ -23,7 +23,7 @@ namespace Palette
     /// </summary>
     public partial class SettingWindow : UserControl, INotifyPropertyChanged
     {
-        public Setting setting;
+        Setting setting;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string info)
@@ -56,7 +56,7 @@ namespace Palette
             }
         }
 
-        public SettingWindow(Setting _setting)
+        internal SettingWindow(Setting _setting)
         {
             setting = _setting;
             InitializeComponent();

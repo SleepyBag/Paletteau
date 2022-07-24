@@ -48,6 +48,7 @@ namespace Paletteau.ViewModel
 
         private CancellationTokenSource _updateSource;
         private Process _backgroundProcess;
+        private IntPtr _backgroundWindow;
         private bool _saved;
 
         private readonly Internationalization _translator;
@@ -484,7 +485,7 @@ namespace Paletteau.ViewModel
             Task.Run(() =>
             {
                 if (token.IsCancellationRequested) { return; }
-                var query = QueryBuilder.Build(queryText, _backgroundProcess, PluginManager.NonGlobalPlugins);
+                var query = QueryBuilder.Build(queryText, _backgroundProcess, _backgroundWindow, PluginManager.NonGlobalPlugins);
                 _lastQuery = query;
                 if (query != null)
                 {
@@ -709,7 +710,8 @@ namespace Paletteau.ViewModel
         {
             if (!ShouldIgnoreHotkeys())
             {
-                // be aware of background process
+                // get information of background process
+                // _backgroundWindow = Helper.WindowsInteropHelper.GetForegroundWindow();
                 _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
                 OnPropertyChanged(nameof(ProcessName));
                 OnPropertyChanged(nameof(ProcessIcon));

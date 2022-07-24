@@ -6,45 +6,51 @@ using System.Threading.Tasks;
 
 namespace Palette
 {
-    using HistoryTable = Dictionary<string, HistoryEntry>;
+    using HistoryTable = List<HistoryEntry>;
 
-    public class HistoryEntry
+    internal class HistoryEntry
     {
         [JsonProperty("count")]
         public int count { get; set; }
-        [JsonProperty("actionItem")]
-        public ActionItem actionItem { get; set; }
+        [JsonProperty("commandItem")]
+        public CommandItem commandItem { get; set; }
+        [JsonProperty("processIdentifier")]
+        public ProcessIdentifier processIdentifier { get; set; }
 
-        public HistoryEntry(ActionItem item)
+        public HistoryEntry(ProcessIdentifier _processIdentifier, CommandItem item)
         {
             count = 0;
-            actionItem = item;
+            processIdentifier = _processIdentifier;
+            commandItem = item;
         }
     }
 
-    public class History
+    internal class History
     {
         [JsonProperty("history")]
-        Dictionary<string, HistoryTable> history = new Dictionary<string, HistoryTable>();
+        HistoryTable history = new HistoryTable();
         string filename;
         
-        public void Hit(Process process, ActionItem actionItem)
+        public HistoryEntry GetEntry(ProcessIdentifier processIdentifier, CommandItem commandItem)
         {
-            HistoryEntry entry;
-            string key = actionItem.action;
-            if (!history.ContainsKey(process.ProcessName))
-                history[process.ProcessName] = new HistoryTable();
-            var historyTable = history[process.ProcessName];
-            if (historyTable.ContainsKey(key) && historyTable[key].actionItem == actionItem)     // item content must match
-                entry = historyTable[key];
-            else
+            // TODO: could be faster by using hash table
+            return history.Find(e => processIdentifier == e.processIdentifier && commandItem == e.commandItem);
+        }
+
+        public void Hit(Process process, CommandItem commandItem)
+        {
+            var processIdentifier = new ProcessIdentifier(process);
+            HistoryEntry entry = GetEntry(processIdentifier, commandItem);
+
+            if (entry == null)
             {
-                entry = new HistoryEntry(actionItem);
-                historyTable[key] = entry;
+                entry = new HistoryEntry(processIdentifier, commandItem);
+                history.Add(entry);
             }
             entry.count += 1;
 
             // asynchronously write to history file
+            // TODO: what if the history file is large?
             Task.Run(() =>
             {
                 using (StreamWriter w = new StreamWriter(File.OpenWrite(filename)))
@@ -56,14 +62,13 @@ namespace Palette
             });
         }
 
-        public int GetCount(Process process, ActionItem actionItem)
+        public int GetCount(Process process, CommandItem commandItem)
         {
-            if (!history.ContainsKey(process.ProcessName))
+            var processIdentifier = new ProcessIdentifier(process);
+            HistoryEntry entry = GetEntry(processIdentifier, commandItem);
+            if (entry == null)
                 return 0;
-            var historyTable = history[process.ProcessName];
-            if (!historyTable.ContainsKey(actionItem.action))
-                return 0;
-            return historyTable[actionItem.action].count;
+            return entry.count;
         }
 
         public static History ReadHistory(string filename)
