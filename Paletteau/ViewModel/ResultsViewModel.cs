@@ -10,9 +10,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using NLog;
+using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Infrastructure.UserSettings;
-using Paletteau.Plugin;
 
 namespace Paletteau.ViewModel
 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paletteau.Infrastructure;
+using System;
 using System.Collections.Generic;
 
 namespace Paletteau.Plugin

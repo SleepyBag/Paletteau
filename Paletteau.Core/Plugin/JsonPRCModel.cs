@@ -15,6 +15,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Paletteau.Infrastructure;
 using Paletteau.Plugin;
 
 namespace Paletteau.Core.Plugin

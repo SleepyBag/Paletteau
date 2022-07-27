@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Storage;
 using Paletteau.Plugin;
 

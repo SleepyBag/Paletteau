@@ -6,7 +6,6 @@ using Newtonsoft.Json.Converters;
 using NLog;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Infrastructure.Storage;
-using Paletteau.Plugin;
 
 namespace Paletteau.Infrastructure.UserSettings
 {

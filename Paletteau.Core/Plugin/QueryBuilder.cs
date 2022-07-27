@@ -3,12 +3,14 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using Paletteau.Plugin;
+using Paletteau.Infrastructure.Windows;
+using Paletteau.Infrastructure;
 
 namespace Paletteau.Core.Plugin
 {
     public static class QueryBuilder
     {
-        public static Query Build(string text, Process backgroundProcess, Dictionary<string, PluginPair> nonGlobalPlugins)
+        public static Query Build(string text, Process backgroundProcess, WindowHandler backgroundWindow, Dictionary<string, PluginPair> nonGlobalPlugins)
         {
             // replace multiple white spaces with one white space
             var terms = text.Split(new[] { Query.TermSeperater }, StringSplitOptions.RemoveEmptyEntries);
@@ -31,12 +33,12 @@ namespace Paletteau.Core.Plugin
 
             var query = new Query
             {
-
                 Terms = terms,
                 RawQuery = rawQuery,
                 ActionKeyword = actionKeyword,
                 Search = search,
                 BackgroundProcess = backgroundProcess,
+                BackgroundWindow = backgroundWindow,
                 // Obsolete value initialisation
                 ActionName = actionKeyword,
                 ActionParameters = actionParameters

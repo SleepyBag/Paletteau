@@ -51,12 +51,17 @@
     <Compile Include="..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ActionContext.cs" />
+    <Compile Include="BaseModel.cs" />
     <Compile Include="Exception\ExceptionFormatter.cs" />
     <Compile Include="FilesFolders.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Hotkey\InterceptKeys.cs" />
     <Compile Include="Hotkey\KeyEvent.cs" />
     <Compile Include="Logger\Log.cs" />
+    <Compile Include="PluginMetadata.cs" />
+    <Compile Include="Query.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Storage\ISavable.cs" />
     <Compile Include="Storage\PluginJsonStorage.cs" />
     <Compile Include="Stopwatch.cs" />
@@ -76,12 +81,7 @@
     <Compile Include="UserSettings\Settings.cs" />
     <Compile Include="UserSettings\DataLocation.cs" />
     <Compile Include="Constant.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Paletteau.Plugin\Paletteau.Plugin.csproj">
-      <Project>{8451ecdd-2ea4-4966-bb0a-7bbc40138e80}</Project>
-      <Name>Paletteau.Plugin</Name>
-    </ProjectReference>
+    <Compile Include="Windows\WindowHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations">

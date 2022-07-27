@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Paletteau.Core.Plugin;
+using Paletteau.Infrastructure;
 using Paletteau.Plugin;
 
 namespace Paletteau.Test
@@ -15,7 +16,7 @@ namespace Paletteau.Test
                 {">", new PluginPair {Metadata = new PluginMetadata {ActionKeywords = new List<string> {">"}}}}
             };
 
-            Query q = QueryBuilder.Build(">   file.txt    file2 file3", null, nonGlobalPlugins);
+            Query q = QueryBuilder.Build(">   file.txt    file2 file3", null, null, nonGlobalPlugins);
 
             Assert.AreEqual("file.txt file2 file3", q.Search);
             Assert.AreEqual(">", q.ActionKeyword);
@@ -29,7 +30,7 @@ namespace Paletteau.Test
                 {">", new PluginPair {Metadata = new PluginMetadata {ActionKeywords = new List<string> {">"}, Disabled = true}}}
             };
 
-            Query q = QueryBuilder.Build(">   file.txt    file2 file3", null, nonGlobalPlugins);
+            Query q = QueryBuilder.Build(">   file.txt    file2 file3", null, null, nonGlobalPlugins);
 
             Assert.AreEqual("> file.txt file2 file3", q.Search);
         }
@@ -37,7 +38,7 @@ namespace Paletteau.Test
         [Test]
         public void GenericPluginQueryTest()
         {
-            Query q = QueryBuilder.Build("file.txt file2 file3", null, new Dictionary<string, PluginPair>());
+            Query q = QueryBuilder.Build("file.txt file2 file3", null, null, new Dictionary<string, PluginPair>());
 
             Assert.AreEqual("file.txt file2 file3", q.Search);
             Assert.AreEqual("", q.ActionKeyword);

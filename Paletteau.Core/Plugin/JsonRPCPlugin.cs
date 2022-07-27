@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using NLog;
+using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Plugin;
 

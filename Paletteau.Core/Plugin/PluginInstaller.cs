@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using ICSharpCode.SharpZipLib.Zip;
 using Newtonsoft.Json;
+using Paletteau.Infrastructure;
 using Paletteau.Plugin;
 
 namespace Paletteau.Core.Plugin

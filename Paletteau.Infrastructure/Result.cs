@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Media;
 
-namespace Paletteau.Plugin
+namespace Paletteau.Infrastructure
 {
 
     public class Result : BaseModel

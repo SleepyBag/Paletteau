@@ -3,6 +3,7 @@ using System.Windows.Media;
 using Paletteau.Plugin;
 using Paletteau.Core.Resource;
 using Paletteau.Image;
+using Paletteau.Infrastructure;
 
 namespace Paletteau.ViewModel
 {

@@ -1,6 +1,4 @@
-﻿using Paletteau.Plugin;
-
-namespace Paletteau.Infrastructure.UserSettings
+﻿namespace Paletteau.Infrastructure.UserSettings
 {
     public class CustomPluginHotkey : BaseModel
     {

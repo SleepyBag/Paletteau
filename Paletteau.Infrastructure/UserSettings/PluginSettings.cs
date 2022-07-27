@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Paletteau.Plugin;
 
 namespace Paletteau.Infrastructure.UserSettings
 {

@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using NHotkey.Wpf;
 using Paletteau.Core.Resource;
+using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Hotkey;
 using Paletteau.Plugin;
 

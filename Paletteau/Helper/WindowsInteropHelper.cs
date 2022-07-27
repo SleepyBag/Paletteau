@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paletteau.Infrastructure.Windows;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Windows.Media.Streaming.Adaptive;
 using Point = System.Windows.Point;
 
 namespace Paletteau.Helper
@@ -56,7 +58,7 @@ namespace Paletteau.Helper
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
 
-        [DllImport("user32.DLL")]
+        [DllImport("user32.dll")]
         public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
 
         [DllImport("user32.dll", SetLastError=true)]
@@ -67,14 +69,29 @@ namespace Paletteau.Helper
         const string WINDOW_CLASS_PROGMAN = "Progman";
         const string WINDOW_CLASS_WORKERW = "WorkerW";
 
-        public static Process GetActiveProcess()
+        private static Process GetProcessByWindow(IntPtr handle)
         {
-            IntPtr handle = GetForegroundWindow();
             uint pID;
            
             GetWindowThreadProcessId(handle, out pID);
 
             return Process.GetProcessById((Int32)pID);
+        }
+
+        public static Process GetProcessByWindowHandler(WindowHandler windowHandler)
+        {
+            return GetProcessByWindow(windowHandler.hWnd);
+        }
+
+        public static WindowHandler GetForegroundWindowHandler()
+        {
+            return new WindowHandler(GetForegroundWindow());
+        }
+
+        public static Process GetActiveProcess()
+        {
+            IntPtr handle = GetForegroundWindow();
+            return GetProcessByWindow(handle);
         }
 
         public static bool IsWindowFullscreen()

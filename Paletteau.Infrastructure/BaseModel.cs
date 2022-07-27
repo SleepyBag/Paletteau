@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace Paletteau.Plugin
+namespace Paletteau.Infrastructure
 {
     public class BaseModel : INotifyPropertyChanged
     {

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Paletteau.Core.Plugin;
 using Paletteau.Core.Resource;
+using Paletteau.Infrastructure;
 using Paletteau.Infrastructure.Exception;
 using Paletteau.Infrastructure.UserSettings;
 using Paletteau.Plugin;

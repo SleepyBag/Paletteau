@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Paletteau.Plugin;
+using Paletteau.Infrastructure;
 
 namespace HelloWorldCSharp
 {

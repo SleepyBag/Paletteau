@@ -1,4 +1,6 @@
-﻿namespace Paletteau.Plugin
+﻿using Paletteau.Infrastructure;
+
+namespace Paletteau.Plugin
 {
     public class PluginPair
     {

@@ -2,8 +2,9 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
+using Paletteau.Infrastructure.Windows;
 
-namespace Paletteau.Plugin
+namespace Paletteau.Infrastructure
 {
     public class Query
     {
@@ -38,6 +39,7 @@ namespace Paletteau.Plugin
         /// The background process which is active before wox takes focus.
         /// </summary>
         public Process BackgroundProcess { get; internal set; }
+        public WindowHandler BackgroundWindow { get; internal set; }
 
         /// <summary>
         /// The raw query splited into a string array.

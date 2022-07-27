@@ -12,6 +12,7 @@ using Paletteau.Helper;
 using Paletteau.Infrastructure.Hotkey;
 using Paletteau.Plugin;
 using Paletteau.ViewModel;
+using Paletteau.Infrastructure;
 
 namespace Paletteau
 {

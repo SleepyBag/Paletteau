@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Paletteau.Plugin;
 
 namespace Paletteau.Infrastructure.Hotkey
 {

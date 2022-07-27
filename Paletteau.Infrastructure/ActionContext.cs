@@ -1,4 +1,4 @@
-﻿namespace Paletteau.Plugin
+﻿namespace Paletteau.Infrastructure
 {
     public class ActionContext
     {

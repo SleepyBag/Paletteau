@@ -43,7 +43,7 @@ namespace Paletteau.Test
         public void BuiltinQueryTest(string QueryText, string ResultTitle)
         {
             
-            Query query = QueryBuilder.Build(QueryText.Trim(), null, PluginManager.NonGlobalPlugins);
+            Query query = QueryBuilder.Build(QueryText.Trim(), null, null, PluginManager.NonGlobalPlugins);
             List<PluginPair> plugins = PluginManager.AllPlugins;
             Result result = plugins.SelectMany(
                     p => PluginManager.QueryForPlugin(p, query)

@@ -13,6 +13,7 @@ using NHotkey;
 using NHotkey.Wpf;
 using NLog;
 
+using Paletteau.Plugin;
 using Paletteau.Core.Plugin;
 using Paletteau.Core.Resource;
 using Paletteau.Helper;
@@ -21,12 +22,12 @@ using Paletteau.Infrastructure.Hotkey;
 using Paletteau.Infrastructure.Logger;
 using Paletteau.Infrastructure.Storage;
 using Paletteau.Infrastructure.UserSettings;
-using Paletteau.Plugin;
 using Paletteau.Storage;
 using System.Drawing;
 using System.Windows.Media;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
+using Paletteau.Infrastructure.Windows;
 
 namespace Paletteau.ViewModel
 {
@@ -48,7 +49,7 @@ namespace Paletteau.ViewModel
 
         private CancellationTokenSource _updateSource;
         private Process _backgroundProcess;
-        private IntPtr _backgroundWindow;
+        private WindowHandler _backgroundWindow;
         private bool _saved;
 
         private readonly Internationalization _translator;

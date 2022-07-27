@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Paletteau.Infrastructure;
 using Paletteau.Plugin;
 
 namespace Paletteau.Core.Plugin

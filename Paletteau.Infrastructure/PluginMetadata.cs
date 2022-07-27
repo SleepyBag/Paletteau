@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Paletteau.Plugin
+namespace Paletteau.Infrastructure
 {
     [JsonObject(MemberSerialization.OptOut)]
     public class PluginMetadata : BaseModel

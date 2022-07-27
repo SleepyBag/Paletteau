@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Paletteau.Infrastructure;
 
 namespace Paletteau.Plugin
 {
