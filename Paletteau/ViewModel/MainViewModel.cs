@@ -714,6 +714,7 @@ namespace Paletteau.ViewModel
                 // get information of background process
                 // _backgroundWindow = Helper.WindowsInteropHelper.GetForegroundWindow();
                 _backgroundProcess = Helper.WindowsInteropHelper.GetActiveProcess();
+                _backgroundWindow = Helper.WindowsInteropHelper.GetForegroundWindowHandler();
                 OnPropertyChanged(nameof(ProcessName));
                 OnPropertyChanged(nameof(ProcessIcon));
 

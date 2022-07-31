@@ -1,0 +1,14 @@
+{
+    "ID":"32E61EFB20824C339A5D3FABB6865394",
+    "ActionKeyword":"wm",
+    "Name":"WindowManagement",
+    "Description":"Provide some actions for operating background window and process",
+    "Author":"Qianming Xue",
+    "Version":"1.0.0",
+    "Language":"csharp",
+    "Website":"",
+    "ExecuteFileName":"WindowManagement.dll",
+    "IcoPath":"Images\\app.png",
+    "Disabled": false
+}
+

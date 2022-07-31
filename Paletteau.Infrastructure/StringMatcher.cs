@@ -170,6 +170,24 @@ namespace Paletteau.Infrastructure
             return match;
         }
 
+        public static List<Result> FilterListResultByTitle(List<Result> results, string query)
+        {
+            query = query.Trim();
+            results = results.Select(result => (StringMatcher.FuzzySearch(query, result.Title), result))
+                .Where(tuple => query == "" || tuple.Item1.Success)
+                .Select(tuple => { var result = tuple.result; result.Score = tuple.Item1.Score; return result; }).ToList();
+            return results;
+        }
+
+        public static List<Result> FilterListResultBySubtitle(List<Result> results, string query)
+        {
+            query = query.Trim();
+            results = results.Select(result => (StringMatcher.FuzzySearch(query, result.SubTitle), result))
+                .Where(tuple => query == "" || tuple.Item1.Success)
+                .Select(tuple => { var result = tuple.result; result.Score = tuple.Item1.Score; return result; }).ToList();
+            return results;
+        }
+
         public enum SearchPrecisionScore
         {
             Regular = 50,
