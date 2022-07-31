@@ -61,6 +61,8 @@ namespace Palette
                     SubTitle = "priority"
                 },
             };
+            // filter by query
+            results = StringMatcher.FilterListResultBySubtitle(results, query.Search);
             return results;
         }
 
